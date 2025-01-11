@@ -1,0 +1,57 @@
+.header {
+    width: 100%;
+}
+
+.item-container {
+    display: flex;
+    font-size: 2rem;
+}
+
+.item-container > div {
+    margin: 24px;
+}
+
+.item-image {
+    width: 80px;
+    height: 80px;
+    margin: 6px;
+    padding-top: 7px;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+    border-color: gray;
+    border-radius: 8px;
+}
+
+.item-image > img {
+    width: 72px;
+    border-radius: 8px;
+}
+
+.item-main-image {
+    display: flex;
+    max-height: 600px;
+}
+
+.item-main-image > img{
+    margin: auto;
+    width: 480px;
+    height: 480px;
+}
+
+.item-image-more {
+    background-color: rgb(0, 0, 0);
+}
+
+.item-details > div{
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.item-code {
+    font-size: 1rem;
+}
+
+.item-reviews {
+    font-size: 1rem;
+}

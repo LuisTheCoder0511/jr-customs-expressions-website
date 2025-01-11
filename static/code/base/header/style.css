@@ -1,0 +1,45 @@
+.navbar {
+    background: white;
+}
+
+.navbar-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-right {
+    display: flex;
+}
+
+.navbar-right > div {
+    width: 84px;
+    height: 56px;
+    align-content: center;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: darkgray;
+}
+
+.logo > img {
+    width: 84px;
+    margin: 2px 2px 2px 12px;
+}
+
+.cart {
+    width: 84px;
+}
+
+.cart > img {
+    padding-top: 3px;
+    width: 32px;
+}
+
+.navbar-dropdown {
+    display: flex;
+    background: lightgray;
+    height: 56px;
+    border-left: 0;
+    border-right: 0;
+}

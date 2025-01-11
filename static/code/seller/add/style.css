@@ -1,0 +1,120 @@
+.popup-window {
+    border-radius: 25px;
+    margin: auto;
+    position: relative;
+    top: 100px;
+    min-width: 400px;
+    width: 75%;
+    max-width: 600px;
+    height: 800px;
+    background-color: lightgray;
+    border-color: gray;
+    border-style: solid;
+}
+
+.popup-title {
+    border-style: solid;
+    border-width: 0;
+    border-bottom-width: 2px;
+    border-color: gray;
+}
+
+.popup-title-text {
+    user-select: none;
+    width: fit-content;
+    margin: 12px auto 10px;
+    padding-bottom: 1px;
+    font-size: 2em;
+}
+
+.popup-header{
+    border-style: solid;
+    border-width: 0;
+    border-bottom-width: 2px;
+    border-color: gray;
+}
+
+.popup-header-container{
+    display: flex;
+    width: fit-content;
+    margin: auto;
+    padding-bottom: 2px;
+}
+
+.popup-header-container > a{
+    user-select: none;
+    font-size: 1.2em;
+    margin: 8px 30px;
+}
+
+.popup-header-container > a:hover {
+    border-radius: 50px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.popup-text {
+    user-select: none;
+    width: fit-content;
+    padding-left: 8px;
+    font-size: 1.2em;
+}
+
+.popup-group{
+    margin: 8px;
+}
+
+.popup-image{
+    text-align: center;
+    width: fit-content;
+}
+
+.popup-img {
+    padding-left: 8px;
+}
+
+.popup-img > img  {
+    width: 96px;
+}
+
+.option1:active{
+    visibility: hidden;
+}
+
+.input {
+    display: flex;
+    position: relative;
+    padding-left: 8px;
+    margin-left: auto;
+}.input-text {
+    border-style: solid;
+    background-color: white;
+    padding-left: 4px;
+    border-radius: 10px;
+    color: black;
+    font-size: 1.25em;
+    resize: none;
+    width: 300px;
+}
+
+.upload-button {
+    margin:auto;
+    width: fit-content;
+}
+
+#upload-button-a {
+    background-color: darkgray;
+    border-radius: 10px;
+    border-style: solid;
+    user-select: none;
+    font-size: 1.5em;
+}
+
+.upload-button-div {
+    padding: 16px 8px;
+}
+
+.upload-button-a:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}

@@ -1,0 +1,132 @@
+.logo {
+    display: flex;
+    margin: auto;
+    width: 50%;
+    min-width: 400px;
+    max-width: 600px;
+}
+
+.navbar {
+    display: flex;
+    margin: auto;
+    border-width: 2px;
+    border-left: 0;
+    border-right: 0;
+    border-color: gray;
+    border-style:solid;
+}
+
+.navbar > a {
+    user-select: none;
+    padding: 10px;
+    margin: 5px;
+    font-size: 1.2em;
+}
+
+.navbar > a:hover {
+    background-color: lightgray;
+    border-radius: 50px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.contact-div {
+    display: flex;
+    margin-left: auto;
+}
+
+.contact-link {
+    user-select: none;
+    padding: 10px;
+    margin: 5px;
+    font-size: 1.2em;
+}
+
+.contact-link:hover {
+    background-color: lightgray;
+    border-radius: 50px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.items-header {
+    display: flex;
+    padding: 5px;
+    border-width: 2px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-color: gray;
+    border-style:solid;
+}
+
+.items-title {
+    user-select: none;
+    padding: 10px;
+    font-size: 1.5rem;
+}
+
+.item-search {
+    display: flex;
+    position: relative;
+    padding: 10px;
+    margin-left: auto;
+}.search_text {
+    background-color: transparent;
+    padding-left: 8px;
+    border-radius: 50px;
+    color: black;
+    font-size: 1.5em;
+}
+
+.item-content {
+    display: flex;
+}
+
+.item-sidebar-popup {
+    width: 200px;
+    height: 400px;
+
+    background-color: black;
+}
+
+.item-box-group {
+    text-align: center;
+    width: 100%;
+    margin: 10px;
+}
+
+.item-box-div {
+    display: inline-block;
+    margin: 10px;
+    width: 268px;
+    height: 332px;
+}
+
+.item-box {
+    margin-bottom: 6px;
+    padding: 6px;
+    border-radius: 10px;
+    background-color: white;
+    border-color:gray;
+    border-width: 3px;
+    border-style: solid;
+}
+
+.item-box > img {
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+}
+
+.item-box > div {
+    text-align: left;
+}
+
+.item-name {
+    font-size: 1.5rem;
+}
+
+.item-price {
+    font-size: 1.25rem;
+}
