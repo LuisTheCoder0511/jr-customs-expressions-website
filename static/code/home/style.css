@@ -1,94 +1,50 @@
-.header {
+.home_logo {
     display: flex;
-    border-style: solid;
-    border-color: lightgray;
-    border-width: 0;
-    border-bottom-width: 4px;
+    margin: auto;
+    width: 50%;
+    min-width: 400px;
+    max-width: 600px;
 }
 
-.logo {
-    width: 88px;
-}
-
-.header_left {
+.navbar {
     display: flex;
+    margin: auto;
+    border-width: 2px;
+    border-left: 0;
+    border-right: 0;
+    border-color: gray;
+    border-style:solid;
 }
 
-.header_right {
+.navbar > a {
+    user-select: none;
+    padding: 10px;
+    margin: 5px;
+    font-size: 1.2em;
+}
+
+.navbar > a:hover {
+    background-color: lightgray;
+    border-radius: 50px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.contact-div {
     display: flex;
-    position: absolute;
-    right: 0;
+    margin-left: auto;
 }
 
-.header_right > div {
-    padding: 8px;
+.contact-link {
+    user-select: none;
+    padding: 10px;
+    margin: 5px;
+    font-size: 1.2em;
 }
 
-.cart {
-    display: flex;
-}
-
-.profile {
-    display: flex;
-}
-
-.text_profile {
-    text-align: right;
-    padding-top: 16px;
-}
-
-.text_cart {
-    text-align: right;
-    padding-top: 16px;
-}
-
-#text_cart_span::after {
-    content: "\A";
-    display: block;
-}
-
-#text_profile_span::after {
-    content: "\A";
-    display: block;
-}
-
-.img_cart {
-    margin: 8px;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: black;
-}
-
-.img_profile {
-    margin: 8px;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: black;
-}
-.search-bar {
-    position: relative;
-    top: 18px;
-}
-
-.search-bar input {
-    width: 400px;
-    height: 48px;
-    font-size: 1.25rem;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 60px;
-}
-
-.search-bar button {
-    width: 42px;
-    height: 42px;
-    position: relative;
-    top: 4px;
-    border-radius: 50%;
-}
-
-.search-bar img {
-    width: 24px;
+.contact-link:hover {
+    background-color: lightgray;
+    border-radius: 50px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }

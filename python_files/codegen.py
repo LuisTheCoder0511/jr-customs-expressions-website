@@ -6,7 +6,7 @@ class CodeGenerator:
         self.codes = set()
         self.codes.update(ids)
         print(f"IDs: {self.codes}")
-        self.size = 12
+        self.size = 18
 
     def __generate__(self):
         code = ""
@@ -21,7 +21,7 @@ class CodeGenerator:
 
     def __validate__(self, code: str):
         binary = bytes(code, "ascii")
-        if self.codes.__contains__(binary) or not code.isalnum() or len(code) < self.size:
+        if self.codes.__contains__(binary) or not code.isalnum() or len(code) != self.size:
             return False
         self.codes.add(binary)
         return True

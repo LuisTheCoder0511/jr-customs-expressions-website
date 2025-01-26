@@ -3,93 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JR Expressions - Seller</title>
-    <link rel="stylesheet" href="../../../static/code/base/style.css" />
+    <title>JR's Seller Management</title>
     <link rel="stylesheet" href="../../../static/code/seller/home/style.css" />
 </head>
 <body>
-    <img class="logo" alt="JR logo"
-        src="../../../static/assets/images/jr_second_logo.png"
-    />
-
-    <div class="navbar">
-        <a class="Items">
-            Items
-        </a>
-        <a class="Reviews">
-            Reviews
-        </a>
-        <a class="Shop Policies">
-            Shop Policies
-        </a>
-        <div class="contact-div">
-            <a class="contact-link">
-                Contact Me
+    <div class="seller_divs">
+        <div class="seller_sidebar">
+            <div class="seller_sidebar_header">
+                Seller Management
+            </div>
+            <a class="seller_sidebar_dashboard">
+                <div class="seller_sidebar_dashboard_img">
+                    <img alt="dashboard" src="../../../static/assets/images/dashboard.png"/>
+                </div>
+                <div class="seller_sidebar_dashboard_text">
+                    <sub>Dashboard</sub>
+                </div>
+            </a>
+            <a class="seller_sidebar_items">
+                <div class="seller_sidebar_items_img">
+                    <img alt="items" src="../../../static/assets/images/search.png"/>
+                </div>
+                <div class="seller_sidebar_items_text">
+                    <sub>Items</sub>
+                </div>
+            </a>
+            <a class="seller_sidebar_stats">
+                <div class="seller_sidebar_stats_img">
+                    <img alt="stats" src="../../../static/assets/images/stats.webp"/>
+                </div>
+                <div class="seller_sidebar_stats_text">
+                    <sub>Statistics</sub>
+                </div>
+            </a>
+            <a class="seller_sidebar_orders">
+                <div class="seller_sidebar_orders_img">
+                    <img alt="orders" src="../../../static/assets/images/orders.png"/>
+                </div>
+                <div class="seller_sidebar_orders_text">
+                    <sub>Orders and Shipping</sub>
+                </div>
+            </a>
+            <a class="seller_sidebar_messages">
+                <div class="seller_sidebar_messages_img">
+                    <img alt="messages" src="../../../static/assets/images/messages.png"/>
+                </div>
+                <div class="seller_sidebar_messages_text">
+                    <sub>Messages</sub>
+                </div>
+            </a>
+            <a class="seller_sidebar_finance">
+                <div class="seller_sidebar_finance_img">
+                    <img alt="finance" src="../../../static/assets/images/finance.webp"/>
+                </div>
+                <div class="seller_sidebar_finance_text">
+                    <sub>Finance</sub>
+                </div>
+            </a>
+            <a class="seller_sidebar_settings">
+                <div class="seller_sidebar_settings_img">
+                    <img alt="settings" src="../../../static/assets/images/settings.png"/>
+                </div>
+                <div class="seller_sidebar_settings_text">
+                    <sub>Settings</sub>
+                </div>
+            </a>
+            <a class="seller_sidebar_account">
+                <div class="seller_sidebar_account_img">
+                    <img alt="account" src="../../../static/assets/images/home_logo.png"/>
+                </div>
+                <div class="seller_sidebar_account_text">
+                    <sub>Jessica Rodriguez</sub>
+                </div>
             </a>
         </div>
-    </div>
-
-    <div class="items-header">
-        <div class="items-title">
-            All Items
-        </div>
-        <div class="item-search">
-            <input class="search_text" type="text" placeholder="Search Items">
-        </div>
-    </div>
-
-    <div class="item-content">
-        <div class="item-box-group">
-            <div class="item-box-div">
-                <div class="item-box">
-                    <img class="item-img" alt="Item Image"
-                    src="../../../static/assets/images/blank%20highlight.jpg"/>
-                    <div class="item-name">
-                        Test
-                    </div>
-                    <div class="item-price">
-                        $69.69
-                    </div>
-                </div>
-            </div>
-            <div class="item-box-div">
-                <div class="item-box">
-                    <img class="item-img" alt="Item Image"
-                    src="../../../static/assets/images/blank%20highlight.jpg"/>
-                    <div class="item-name">
-                        Test
-                    </div>
-                    <div class="item-price">
-                        $69.69
-                    </div>
-                </div>
-            </div>
-            <div class="item-box-div">
-                <div class="item-box">
-                    <img class="item-img" alt="Item Image"
-                    src="../../../static/assets/images/blank%20highlight.jpg"/>
-                    <div class="item-name">
-                        Test
-                    </div>
-                    <div class="item-price">
-                        $69.69
-                    </div>
-                </div>
-            </div>
-            <div class="item-box-div">
-                <div class="item-box">
-                    <img class="item-img" alt="Item Image"
-                    src="../../../static/assets/images/blank%20highlight.jpg"/>
-                    <div class="item-name">
-                        Test
-                    </div>
-                    <div class="item-price">
-                        $69.69
-                    </div>
-                </div>
-            </div>
+        <div class="seller_content">
+            <nav class="mcnav_seller_content"></nav>
+            <script src="../../../static/code/seller/mcnav/scripts/items.js"></script>
         </div>
     </div>
 </body>
-<script src="../../../static/code/seller/home/scripts/load-items.js"></script>
 </html>

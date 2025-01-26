@@ -30,9 +30,15 @@
                     <div class="popup-text">
                         Upload Image
                     </div>
-                    <div class="popup-img">
+                    <input type="file" id="fileInput" style="display:none">
+                    <button onclick="openFile()" class="popup-img">
                         <img src="../../../static/assets/images/upload_img.png" alt="Image"/>
-                    </div>
+                    </button>
+                    <script>
+                        function openFile() {
+                            document.getElementById("fileInput").click()
+                        }
+                    </script>
                 </div>
             </div>
             <div class="popup-group">

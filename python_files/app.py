@@ -1,26 +1,39 @@
 from flask import Flask, render_template, request
 import json
 
-from python_files.database import Database
-from python_files.tables import item, profile
-from python_files.codegen import CodeGenerator
+import database
+from tables import items, profiles, carts
+from objects import item, profile, cart
+from codegen import CodeGenerator
 
-app = Flask(__name__)
-# app.config["SECRET_KEY"] = "!LuromA!5847"
+from urls.base_urls import blueprint as base_blueprint
+from urls.mcnav_urls import blueprint as mcnav_blueprint
+
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
+app.register_blueprint(base_blueprint)
+app.register_blueprint(mcnav_blueprint)
 
 
 @app.route("/")
 def home():
+
+
+
     if __is_mobile__():
         return json.dumps({'task': 'home'})
     return render_template("home/index.html")
+
+
+@app.route("/item")
+def http_item():
+    return render_template("item/index.html")
 
 
 @app.route("/profile#get", methods=['GET'])
 def profile_http_get():
     account = request.get_json()
     name = account["name"]
-    datas = database.__select_one__("profiles", "name", name)
+    datas = profiles.__select_one__(database, "name", name)
     if __is_mobile__():
         return json.dumps({'task': 'json_get: ' + datas})
     return json.dumps(datas)
@@ -35,9 +48,11 @@ def profile_http_add():
         json_data["name"],
         json_data["bio"],
         json_data["email"],
-        json_data["phone"]
+        json_data["phone"],
+        json_data["img"],
+        json_data["cart_id"],
     )
-    database.__insert__("profiles", profile.__keys__(), current_profile.__values__())
+    profiles.__insert__(database, current_profile)
     return json_data
 
 
@@ -65,17 +80,11 @@ def seller_http_get():
 
 @app.route("/seller#add", methods=['POST'])
 def seller_http_add():
-    codes = __code_generator__("items", "code")
+    codes = __code_generator__("items", "item_id")
     json_data = request.get_json()
-    current_item = item.Item(
-        codes,
-        json_data["name"],
-        json_data["description"],
-        json_data["price"],
-        json_data["quantity"],
-        json_data["item_type"]
-    )
-    database.__insert__("items", item.__keys__(), current_item.__values__())
+    current_item = item.Item(codes, json_data["name"], json_data["description"], json_data["price"],
+                             json_data["quantity"], json_data["img"], json_data["metadata"])
+    items.__insert__(database, current_item)
     return json_data
 
 
@@ -84,24 +93,13 @@ def __is_mobile__():
     return device.__contains__("Mobile")
 
 
-def __code_generator__(table_name: str, column_name: str):
-    ids = database.__select_all__(table_name, column_name)
-    code_gen = CodeGenerator(ids)
-    return code_gen.__generate__()
-
-
 if __name__ == '__main__':
     PORT = 8001
-    database = Database("database/test")
-    database.__create_table__("items", item.__blueprint__())
-    database.__create_table__("profiles", profile.__blueprint__())
-    code = __code_generator__("profiles", "code")
-    user = profile.Profile(
-        code,
-        "luroma0511",
-        "This is my description",
-        "luroma0511@email.com",
-        "1234567890"
-    )
-    database.__insert__("profiles", profile.__keys__(), user.__values__())
-    app.run(debug=True, host="0.0.0.0", port=PORT)
+
+    database.__create_connection__()
+    items.__create_table__(database)
+    profiles.__create_table__(database)
+    carts.__create_table__(database)
+    database.__close_connection__()
+
+    app.run(debug=True, host="0.0.0.0", port=PORT, use_reloader=False)
