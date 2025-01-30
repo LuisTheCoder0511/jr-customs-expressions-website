@@ -4,32 +4,32 @@ blueprint = Blueprint('mcnav_settings', __name__, url_prefix='/mcnav/settings')
 
 
 @blueprint.route("/account")
-def seller_items():
+def settings_account():
     return navigate_url("account")
 
 
 @blueprint.route("/security")
-def seller_stats():
+def settings_security():
     return navigate_url("security")
 
 
 @blueprint.route("/privacy")
-def seller_orders():
+def settings_privacy():
     return navigate_url("privacy")
 
 
 @blueprint.route("/address")
-def seller_messages():
+def settings_address():
     return navigate_url("address")
 
 
 @blueprint.route("/credit")
-def seller_finance():
+def settings_credit():
     return navigate_url("credit")
 
 
 @blueprint.route("/email")
-def seller_settings():
+def settings_email():
     return navigate_url("email")
 
 
