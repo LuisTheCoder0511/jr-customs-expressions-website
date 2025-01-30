@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JR's Seller Management</title>
-    <link rel="stylesheet" href="../../../static/code/seller/home/style.css" />
+    <link rel="stylesheet" href="/static/styles/seller/home/style.css" />
 </head>
 <body>
     <div class="seller_divs">
@@ -14,55 +14,68 @@
             </div>
             <a class="seller_sidebar_dashboard">
                 <div class="seller_sidebar_dashboard_img">
-                    <img alt="dashboard" src="../../../static/assets/images/dashboard.png"/>
+                    <img alt="dashboard"
+                         src="/static/assets/images/dashboard.png"/>
                 </div>
                 <div class="seller_sidebar_dashboard_text">
                     <sub>Dashboard</sub>
                 </div>
             </a>
-            <a class="seller_sidebar_items">
+            <a class="seller_sidebar_items"
+               onclick=changeIframe("/mcnav/items")>
                 <div class="seller_sidebar_items_img">
-                    <img alt="items" src="../../../static/assets/images/search.png"/>
+                    <img alt="items"
+                         src="/static/assets/images/search.png"/>
                 </div>
                 <div class="seller_sidebar_items_text">
                     <sub>Items</sub>
                 </div>
             </a>
-            <a class="seller_sidebar_stats">
+            <a class="seller_sidebar_stats"
+               onclick=changeIframe("/mcnav/stats")>
                 <div class="seller_sidebar_stats_img">
-                    <img alt="stats" src="../../../static/assets/images/stats.webp"/>
+                    <img alt="stats"
+                         src="/static/assets/images/stats.webp"/>
                 </div>
                 <div class="seller_sidebar_stats_text">
                     <sub>Statistics</sub>
                 </div>
             </a>
-            <a class="seller_sidebar_orders">
+            <a class="seller_sidebar_orders"
+               onclick=changeIframe("/mcnav/orders")>
                 <div class="seller_sidebar_orders_img">
-                    <img alt="orders" src="../../../static/assets/images/orders.png"/>
+                    <img alt="orders"
+                         src="/static/assets/images/orders.png"/>
                 </div>
                 <div class="seller_sidebar_orders_text">
-                    <sub>Orders and Shipping</sub>
+                    <sub>Orders</sub>
                 </div>
             </a>
-            <a class="seller_sidebar_messages">
+            <a class="seller_sidebar_messages"
+               onclick=changeIframe("/mcnav/messages")>
                 <div class="seller_sidebar_messages_img">
-                    <img alt="messages" src="../../../static/assets/images/messages.png"/>
+                    <img alt="messages"
+                         src="/static/assets/images/messages.png"/>
                 </div>
                 <div class="seller_sidebar_messages_text">
                     <sub>Messages</sub>
                 </div>
             </a>
-            <a class="seller_sidebar_finance">
+            <a class="seller_sidebar_finance"
+               onclick=changeIframe("/mcnav/finance")>
                 <div class="seller_sidebar_finance_img">
-                    <img alt="finance" src="../../../static/assets/images/finance.webp"/>
+                    <img alt="finance"
+                         src="/static/assets/images/finance.webp"/>
                 </div>
                 <div class="seller_sidebar_finance_text">
                     <sub>Finance</sub>
                 </div>
             </a>
-            <a class="seller_sidebar_settings">
+            <a class="seller_sidebar_settings"
+               onclick=changeIframe("/mcnav/settings")>
                 <div class="seller_sidebar_settings_img">
-                    <img alt="settings" src="../../../static/assets/images/settings.png"/>
+                    <img alt="settings"
+                         src="/static/assets/images/settings.png"/>
                 </div>
                 <div class="seller_sidebar_settings_text">
                     <sub>Settings</sub>
@@ -70,7 +83,8 @@
             </a>
             <a class="seller_sidebar_account">
                 <div class="seller_sidebar_account_img">
-                    <img alt="account" src="../../../static/assets/images/home_logo.png"/>
+                    <img alt="account"
+                         src="/static/assets/images/home_logo.png"/>
                 </div>
                 <div class="seller_sidebar_account_text">
                     <sub>Jessica Rodriguez</sub>
@@ -78,9 +92,16 @@
             </a>
         </div>
         <div class="seller_content">
-            <nav class="mcnav_seller_content"></nav>
-            <script src="../../../static/code/seller/mcnav/scripts/items.js"></script>
+            <iframe id="seller_content_frame"
+                    height="100%"></iframe>
         </div>
     </div>
 </body>
+<script>
+    function changeIframe(newSrc){
+        document.getElementById("seller_content_frame").src = newSrc;
+    }
+
+    changeIframe("/mcnav/items")
+</script>
 </html>

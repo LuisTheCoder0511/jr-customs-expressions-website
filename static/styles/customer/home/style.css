@@ -1,0 +1,50 @@
+.home_logo {
+    display: flex;
+    margin: auto;
+    width: 50%;
+    min-width: 400px;
+    max-width: 600px;
+}
+
+.navbar {
+    display: flex;
+    margin: auto;
+    border-width: 2px;
+    border-left: 0;
+    border-right: 0;
+    border-color: gray;
+    border-style:solid;
+}
+
+.navbar > a {
+    user-select: none;
+    padding: 10px;
+    margin: 5px;
+    font-size: 1.2em;
+}
+
+.navbar > a:hover {
+    background-color: lightgray;
+    border-radius: 50px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.contact-div {
+    display: flex;
+    margin-left: auto;
+}
+
+.contact-link {
+    user-select: none;
+    padding: 10px;
+    margin: 5px;
+    font-size: 1.2em;
+}
+
+.contact-link:hover {
+    background-color: lightgray;
+    border-radius: 50px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}

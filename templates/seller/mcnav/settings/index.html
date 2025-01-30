@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JR's Seller Management - Settings</title>
+    <link rel="stylesheet" href="/static/styles/seller/mcnav/style.css" />
+    <link rel="stylesheet" href="/static/styles/seller/mcnav/settings/style.css" />
+</head>
+<body>
+    <div class="mcnav_seller_content">
+        <div class="seller_content_header">
+            <div class="seller_content_header_text">
+                Settings
+            </div>
+        </div>
+        <div class="seller_settings_header">
+            <a class="button-inactive" id="account_button" onclick=setActiveHTML("account")>
+                Account
+            </a>
+            <a class="button-inactive" id="security_button" onclick=setActiveHTML("security")>
+                Security
+            </a>
+            <a class="button-inactive" id="privacy_button" onclick=setActiveHTML("privacy")>
+                Privacy
+            </a>
+            <a class="button-inactive" id="address_button" onclick=setActiveHTML("address")>
+                Addresses
+            </a>
+            <a class="button-inactive" id="credit_button" onclick=setActiveHTML("credit")>
+                Credit Cards
+            </a>
+            <a class="button-inactive" id="email_button" onclick=setActiveHTML("email")>
+                Emails
+            </a>
+        </div>
+        <div class="seller_settings_content">
+            <iframe id="seller_settings_content_frame"></iframe>
+        </div>
+    </div>
+</body>
+<script>
+    let previousButtonType = null;
+    function setActiveHTML(buttonType){
+        if (previousButtonType === buttonType) return;
+        if (previousButtonType !== null) {
+            let element = document.getElementById(previousButtonType + "_button");
+            element.className = "button_inactive";
+            element.style.cssText = "";
+        }
+
+        let element = document.getElementById(buttonType + "_button");
+        element.className = "button_active";
+        element.style.cssText = "border-color: black;\n" +
+            "    border-style: solid;\n" +
+            "    border-width: 0 0 2px 0;"
+
+        previousButtonType = buttonType;
+
+        changeIframe('/mcnav/settings/' + buttonType);
+    }
+
+    setActiveHTML("account");
+</script>
+<script>
+    function changeIframe(newSrc){
+        document.getElementById("seller_settings_content_frame").src = newSrc;
+    }
+
+    changeIframe("/mcnav/settings/account")
+</script>
+</html>

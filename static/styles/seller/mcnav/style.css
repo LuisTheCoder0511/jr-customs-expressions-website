@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.seller_content_header {
+    display: flex;
+    font-size: 1.75rem;
+    font-weight: bold;
+    padding: 11px;
+    user-select: none;
+    border-style: solid;
+    border-color: darkgray;
+    border-width: 0 0 1px 0;
+}
+
+.seller_content_header_text {
+    margin-right: auto;
+    padding-top: 4px;
+}
+
+.seller_content_header_search_input {
+    font-size: 1.15rem;
+    width: 200px;
+    height: 24px;
+}

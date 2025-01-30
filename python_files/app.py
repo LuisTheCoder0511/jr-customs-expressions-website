@@ -8,10 +8,12 @@ from codegen import CodeGenerator
 
 from urls.base_urls import blueprint as base_blueprint
 from urls.mcnav_urls import blueprint as mcnav_blueprint
+from urls.mcnav_settings_urls import blueprint as mcnav_settings_blueprint
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.register_blueprint(base_blueprint)
 app.register_blueprint(mcnav_blueprint)
+app.register_blueprint(mcnav_settings_blueprint)
 
 
 @app.route("/")
@@ -21,12 +23,12 @@ def home():
 
     if __is_mobile__():
         return json.dumps({'task': 'home'})
-    return render_template("home/index.html")
+    return render_template("customer/home/index.html")
 
 
 @app.route("/item")
 def http_item():
-    return render_template("item/index.html")
+    return render_template("customer/mcnav/items/index.html")
 
 
 @app.route("/profile#get", methods=['GET'])
@@ -39,21 +41,21 @@ def profile_http_get():
     return json.dumps(datas)
 
 
-@app.route("/profile#add", methods=['POST'])
-def profile_http_add():
-    codes = __code_generator__("profiles", "code")
-    json_data = request.get_json()
-    current_profile = profile.Profile(
-        codes,
-        json_data["name"],
-        json_data["bio"],
-        json_data["email"],
-        json_data["phone"],
-        json_data["img"],
-        json_data["cart_id"],
-    )
-    profiles.__insert__(database, current_profile)
-    return json_data
+# @app.route("/profile#add", methods=['POST'])
+# def profile_http_add():
+#     codes = __code_generator__("profiles", "code")
+#     json_data = request.get_json()
+#     current_profile = profile.Profile(
+#         codes,
+#         json_data["name"],
+#         json_data["bio"],
+#         json_data["email"],
+#         json_data["phone"],
+#         json_data["img"],
+#         json_data["cart_id"],
+#     )
+#     profiles.__insert__(database, current_profile)
+#     return json_data
 
 
 @app.route("/seller", methods=['GET'])
@@ -78,14 +80,14 @@ def seller_http_get():
     return json.dumps(datas)
 
 
-@app.route("/seller#add", methods=['POST'])
-def seller_http_add():
-    codes = __code_generator__("items", "item_id")
-    json_data = request.get_json()
-    current_item = item.Item(codes, json_data["name"], json_data["description"], json_data["price"],
-                             json_data["quantity"], json_data["img"], json_data["metadata"])
-    items.__insert__(database, current_item)
-    return json_data
+# @app.route("/seller#add", methods=['POST'])
+# def seller_http_add():
+#     codes = __code_generator__("items", "item_id")
+#     json_data = request.get_json()
+#     current_item = item.Item(codes, json_data["name"], json_data["description"], json_data["price"],
+#                              json_data["quantity"], json_data["img"], json_data["metadata"])
+#     items.__insert__(database, current_item)
+#     return json_data
 
 
 def __is_mobile__():
