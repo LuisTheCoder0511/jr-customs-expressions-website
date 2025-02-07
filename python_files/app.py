@@ -9,11 +9,13 @@ from codegen import CodeGenerator
 from urls.base_urls import blueprint as base_blueprint
 from urls.mcnav_urls import blueprint as mcnav_blueprint
 from urls.mcnav_settings_urls import blueprint as mcnav_settings_blueprint
+from urls.login_urls import blueprint as login_blueprint
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.register_blueprint(base_blueprint)
 app.register_blueprint(mcnav_blueprint)
 app.register_blueprint(mcnav_settings_blueprint)
+app.register_blueprint(login_blueprint)
 
 
 @app.route("/")

@@ -40,6 +40,13 @@
     </div>
 </body>
 <script>
+    function changeIframe(newSrc){
+        document.getElementById("seller_settings_content_frame").src = newSrc;
+    }
+
+    changeIframe("/mcnav/settings/account")
+</script>
+<script>
     let previousButtonType = null;
     function setActiveHTML(buttonType){
         if (previousButtonType === buttonType) return;
@@ -61,12 +68,5 @@
     }
 
     setActiveHTML("account");
-</script>
-<script>
-    function changeIframe(newSrc){
-        document.getElementById("seller_settings_content_frame").src = newSrc;
-    }
-
-    changeIframe("/mcnav/settings/account")
 </script>
 </html>

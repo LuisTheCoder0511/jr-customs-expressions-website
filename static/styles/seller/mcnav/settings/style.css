@@ -1,14 +1,14 @@
 .seller_settings_header {
     display: flex;
     height: 56px;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     border-style: solid;
     border-color: lightgray;
     border-width: 0 0 2px 0;
 }
 
 .seller_settings_header > a {
-    width: 110px;
+    width: fit-content;
     margin: auto;
     text-align: center;
 }

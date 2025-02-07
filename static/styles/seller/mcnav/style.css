@@ -6,6 +6,10 @@ a:hover {
     cursor: pointer;
 }
 
+.mcnav_seller_content {
+    user-select: none;
+}
+
 .seller_content_header {
     display: flex;
     font-size: 1.75rem;

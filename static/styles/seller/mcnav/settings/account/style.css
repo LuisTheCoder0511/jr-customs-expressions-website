@@ -1,0 +1,56 @@
+.mcnav_settings_account {
+    user-select: none;
+}
+
+.subsection {
+    display: flex;
+    flex-direction: column;
+    margin: 12px;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: lightgray;
+}
+
+.subcontent {
+    margin: 12px;
+}
+
+.subtitle {
+    font-size: 1.35rem;
+    font-weight: bold;
+    margin: 12px;
+}
+
+.subheader {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.subtext {
+    font-size: 1.15rem;
+}
+
+.sublabel {
+    font-size: 1.15rem;
+}
+
+.subpassword {
+    font-size: 1.15rem;
+}
+
+.subbutton {
+    text-align: center;
+    font-size: 1.25rem;
+    width: fit-content;
+    padding-left: 4px;
+    padding-right: 4px;
+    height: 32px;
+    margin: 12px;
+    padding-top: 8px;
+    border-width: 2px;
+    border-radius: 20px;
+    border-color: black;
+    border-style: solid;
+}
