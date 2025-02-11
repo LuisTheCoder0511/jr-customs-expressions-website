@@ -99,7 +99,7 @@
 </body>
 <script>
     function changeIframe(newSrc){
-        document.getElementById("seller_content_frame").src = newSrc;
+        document.getElementById("seller_content_frame").contentWindow.location.replace(newSrc);
     }
 
     changeIframe("/mcnav/items")
