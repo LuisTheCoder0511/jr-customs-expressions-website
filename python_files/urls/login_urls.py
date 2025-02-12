@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+import database
 
 blueprint = Blueprint('login', __name__, url_prefix='/login')
 
@@ -11,6 +12,11 @@ def login():
 @blueprint.route("/register")
 def register():
     return navigate_url("register")
+
+
+@blueprint.route("/submit-username")
+def submit_username():
+    pass
 
 
 def navigate_url(url):

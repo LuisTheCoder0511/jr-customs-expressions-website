@@ -1,7 +1,9 @@
 
 class Cart:
 
-    def __init__(self, cart_id, item_ids, price):
-        self.cart_id = cart_id
-        self.item_ids = item_ids
-        self.price = price
+    def __init__(self, ItemIDs):
+        self.ID = 0
+        self.ItemIDs = ItemIDs
+
+    def __set_id__(self, ID):
+        self.ID = ID

@@ -1,13 +1,14 @@
-from python_files.objects.metadata import Metadata
-
 
 class Item:
 
-    def __init__(self, item_id, name, description, price, quantity, initial_date, metadata: Metadata):
-        self.item_id = item_id
+    def __init__(self, name, description, categoryID, price, quantity, meta):
+        self.ID = 0
         self.name = name
         self.description = description
+        self.categoryID = categoryID
         self.price = price
         self.quantity = quantity
-        self.initial_date = initial_date
-        self.metadata = metadata
+        self.meta = meta
+
+    def __set_id__(self, ID):
+        self.ID = ID

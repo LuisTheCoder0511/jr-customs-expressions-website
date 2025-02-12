@@ -1,84 +1,74 @@
-from sqlite3 import Error
-
 from python_files.objects.item import Item
+from python_files import database
 
 
-def __create_table__(database):
-    statement = f"""CREATE TABLE IF NOT EXISTS items (
-    item_id TEXT PRIMARY KEY NOT NULL,
-    name TEXT,
-    description TEXT,
-    price REAL,
-    quantity REAL,
-    initial_date DATETIME,
-    metadata BLOB)"""
-    database.cursor.execute(statement)
+table_name = "Item"
 
 
-def __select_all__(database, column_name: str = '*'):
-    database.__create_connection__()
-    database.cursor.execute(f'SELECT {column_name} FROM items')
-    result = database.cursor.fetchall()
-    database.__close_connection__()
-    return result
+def __create_table__():
+    args = f"""(ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT UNIQUE NOT NULL,
+            description TEXT,
+            categoryID INTEGER,
+            price REAL,
+            quantity INTEGER,
+            meta TEXT)
+            """
+    database.__create_table__(table_name, args)
 
 
-def __select_one__(database, key: str, value):
-    database.__create_connection__()
-    database.cursor.execute(f'SELECT * FROM items WHERE {key} = ?', (value,))
-    result = database.cursor.fetchone()
-    database.__close_connection__()
-    return result
-
-
-def __insert__(database, item: Item):
-    try:
-        database.__create_connection__()
-        database.cursor.execute(f'''
-            INSERT OR IGNORE INTO items (
-            item_id,
-            name, 
-            description, 
-            price, 
-            quantity, 
-            initial_date, 
-            metadata) 
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-            ''', (item.item_id,
-                  item.name,
-                  item.description,
-                  item.price,
-                  item.quantity,
-                  item.initial_date,
-                  item.metadata))
-        database.__close_connection__()
-    except Error as _:
+def __retrieve_id__(item: Item):
+    data = database.__select_one__(table_name, "name", item.name)
+    if not data:
         return False
+    item.__set_id__(data[0])
     return True
 
 
-def __update__(database, item: Item, data_key: str, data_value):
-    try:
-        database.__create_connection__()
-        database.cursor.execute(f'''
-            UPDATE items 
-            SET {data_key} = ? 
-            WHERE item_id = ?
-            ''', (data_value, item.item_id))
-        database.__close_connection__()
-    except Error as _:
-        return False
-    return True
+def __get_item__(name: str):
+    data = database.__select_one__(table_name, "name", name)
+    if not data:
+        return None
+
+    item = Item(data[1], data[2], data[3], data[4], data[5], data[6])
+    item.__set_id__(data[0])
+    return item
 
 
-def __delete__(database, item: Item):
-    try:
-        database.__create_connection__()
-        database.cursor.execute(f'''
-        DELETE FROM items 
-        WHERE item_id = {item.item_id}
-        ''')
-        database.__close_connection__()
-    except Error as _:
-        return False
-    return True
+def __select_all__(filter: str = '*'):
+    data = database.__select_all__(table_name, filter)
+    print(data)
+
+
+def __select_list__(where_key: str, where_value):
+    data = database.__select_list__(table_name, where_key, where_value)
+    print(data)
+
+
+def __insert__(item: Item):
+    statement = "(name, description, categoryID, price, quantity, meta) VALUES (?, ?, ?, ?, ?, ?)"
+    args = (item.name, item.description, item.categoryID, item.price, item.quantity, item.meta)
+    return database.__insert__(table_name, statement, args)
+
+
+def __update__(item: Item, data_key: str, data_value):
+    database.__update__(table_name, data_key, data_value, item.ID)
+
+
+def __delete__(item: Item):
+    database.__delete__(table_name, item.ID)
+
+
+database.__create_connection__()
+__create_table__()
+current_item = Item("blip", "", 0, 9.99, 1, "")
+if not __retrieve_id__(current_item):
+    result = __insert__(current_item)
+    print(f"Insert... {result}")
+    __retrieve_id__(current_item)
+
+print(current_item.__dict__)
+current_item = __get_item__("name")
+__select_all__()
+__select_list__("categoryID", 0)
+database.__close_connection__()

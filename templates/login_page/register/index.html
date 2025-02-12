@@ -17,17 +17,12 @@
             </div>
             <div class="login_label">
                 <label>
-                    <input class="login_email" type="text" placeholder="Email">
+                    <input id="login_username" type="text" placeholder="Username">
                 </label>
             </div>
             <div class="login_label">
                 <label>
-                    <input class="login_username" type="text" placeholder="Username">
-                </label>
-            </div>
-            <div class="login_label">
-                <label>
-                    <input class="login_password" type="password" placeholder="Password">
+                    <input id="login_password" type="password" placeholder="Password">
                 </label>
             </div>
             <div class="login_sublabel">
@@ -72,26 +67,5 @@
         </div>
     </div>
 </body>
-<script>
-
-    let remember_me_value = true;
-
-    function login_page(){
-        window.location.replace("/login/")
-    }
-
-    function register(){
-        alert("Registered!")
-        window.location.replace("/")
-    }
-
-    function remember_me(){
-        let visibility = "hidden"
-        remember_me_value = !remember_me_value
-        if (remember_me_value) visibility = "visible"
-        document.getElementById("checkmark").style.visibility = visibility
-    }
-
-    remember_me()
-</script>
+<script src="/static/scripts/login/script.js"></script>
 </html>

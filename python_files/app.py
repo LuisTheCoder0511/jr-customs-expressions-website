@@ -1,10 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, redirect, url_for
 import json
 
 import database
-from tables import items, profiles, carts
-from objects import item, profile, cart
-from codegen import CodeGenerator
+import login
 
 from urls.base_urls import blueprint as base_blueprint
 from urls.mcnav_urls import blueprint as mcnav_blueprint
@@ -20,12 +18,13 @@ app.register_blueprint(login_blueprint)
 
 @app.route("/")
 def home():
+    # if __is_mobile__():
+    #     return json.dumps({'task': 'home'})
 
+    if login.check_file():
+        return render_template("customer/home/index.html")
 
-
-    if __is_mobile__():
-        return json.dumps({'task': 'home'})
-    return render_template("customer/home/index.html")
+    return redirect(url_for('login.login'))
 
 
 @app.route("/item")
@@ -33,52 +32,19 @@ def http_item():
     return render_template("customer/mcnav/items/index.html")
 
 
-@app.route("/profile#get", methods=['GET'])
-def profile_http_get():
-    account = request.get_json()
-    name = account["name"]
-    datas = profiles.__select_one__(database, "name", name)
-    if __is_mobile__():
-        return json.dumps({'task': 'json_get: ' + datas})
-    return json.dumps(datas)
-
-
-# @app.route("/profile#add", methods=['POST'])
-# def profile_http_add():
-#     codes = __code_generator__("profiles", "code")
-#     json_data = request.get_json()
-#     current_profile = profile.Profile(
-#         codes,
-#         json_data["name"],
-#         json_data["bio"],
-#         json_data["email"],
-#         json_data["phone"],
-#         json_data["img"],
-#         json_data["cart_id"],
-#     )
-#     profiles.__insert__(database, current_profile)
-#     return json_data
-
-
 @app.route("/seller", methods=['GET'])
 def seller_home():
-    if __is_mobile__():
-        return json.dumps({'task': 'seller_home'})
     return render_template("seller/home/index.html")
 
 
 @app.route("/seller/add", methods=['GET'])
 def seller_add():
-    if __is_mobile__():
-        return json.dumps({'task': 'seller_add'})
     return render_template("seller/add/index.html")
 
 
 @app.route("/seller#get", methods=['GET'])
 def seller_http_get():
     datas = database.__select_all__("items")
-    if __is_mobile__():
-        return json.dumps({'task': 'json_get: ' + datas})
     return json.dumps(datas)
 
 
@@ -92,18 +58,11 @@ def seller_http_get():
 #     return json_data
 
 
-def __is_mobile__():
-    device = request.headers.get('User-Agent')
-    return device.__contains__("Mobile")
-
-
 if __name__ == '__main__':
     PORT = 8001
 
-    database.__create_connection__()
-    items.__create_table__(database)
-    profiles.__create_table__(database)
-    carts.__create_table__(database)
-    database.__close_connection__()
+    print("Available routes:")
+    for rule in app.url_map.iter_rules():
+        print(f"URL: {rule}, Endpoint: {rule.endpoint}")
 
     app.run(debug=True, host="0.0.0.0", port=PORT, use_reloader=False)

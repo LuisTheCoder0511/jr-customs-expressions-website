@@ -2,8 +2,8 @@ from flask import Blueprint, request
 import json
 
 from python_files import database
-from python_files.tables import items, profiles, carts
-from python_files.objects import item, profile, cart
+from python_files.tables import items, accounts, carts
+from python_files.objects import item, account, cart
 from python_files.codegen import CodeGenerator
 
 blueprint = Blueprint('base', __name__, url_prefix='/db')

@@ -22,7 +22,7 @@
                 </div>
             </a>
             <a class="seller_sidebar_items"
-               onclick=changeIframe("/mcnav/items")>
+               onclick=changeIframe("items")>
                 <div class="seller_sidebar_items_img">
                     <img alt="items"
                          src="/static/assets/images/search.png"/>
@@ -32,7 +32,7 @@
                 </div>
             </a>
             <a class="seller_sidebar_stats"
-               onclick=changeIframe("/mcnav/stats")>
+               onclick=changeIframe("stats")>
                 <div class="seller_sidebar_stats_img">
                     <img alt="stats"
                          src="/static/assets/images/stats.webp"/>
@@ -42,7 +42,7 @@
                 </div>
             </a>
             <a class="seller_sidebar_orders"
-               onclick=changeIframe("/mcnav/orders")>
+               onclick=changeIframe("orders")>
                 <div class="seller_sidebar_orders_img">
                     <img alt="orders"
                          src="/static/assets/images/orders.png"/>
@@ -52,7 +52,7 @@
                 </div>
             </a>
             <a class="seller_sidebar_messages"
-               onclick=changeIframe("/mcnav/messages")>
+               onclick=changeIframe("messages")>
                 <div class="seller_sidebar_messages_img">
                     <img alt="messages"
                          src="/static/assets/images/messages.png"/>
@@ -62,7 +62,7 @@
                 </div>
             </a>
             <a class="seller_sidebar_finance"
-               onclick=changeIframe("/mcnav/finance")>
+               onclick=changeIframe("finance")>
                 <div class="seller_sidebar_finance_img">
                     <img alt="finance"
                          src="/static/assets/images/finance.webp"/>
@@ -72,7 +72,7 @@
                 </div>
             </a>
             <a class="seller_sidebar_settings"
-               onclick=changeIframe("/mcnav/settings")>
+               onclick=changeIframe("settings")>
                 <div class="seller_sidebar_settings_img">
                     <img alt="settings"
                          src="/static/assets/images/settings.png"/>
@@ -98,10 +98,20 @@
     </div>
 </body>
 <script>
-    function changeIframe(newSrc){
-        document.getElementById("seller_content_frame").contentWindow.location.replace(newSrc);
+
+    const options = {method: "POST", headers: {"Content-Type": "application/json"}}
+
+    async function changeIframe(newSrc){
+        options.body = JSON.stringify({arg: newSrc})
+        fetch("/mcnav/", options)
+            .then(response => response.text())
+            .then(html => {
+                const iframe = document.getElementById("seller_content_frame");
+                iframe.srcdoc = html;
+            })
+            .catch(error => console.error("error:", error));
     }
 
-    changeIframe("/mcnav/items")
+    changeIframe("items")
 </script>
 </html>

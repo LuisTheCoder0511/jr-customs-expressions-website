@@ -1,6 +1,6 @@
 from codegen import CodeGenerator
-from objects import profile, cart
-from tables import profiles, carts
+from objects import account, cart
+from tables import accounts, carts
 import database
 
 

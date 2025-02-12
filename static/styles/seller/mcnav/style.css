@@ -21,13 +21,39 @@ a:hover {
     border-width: 0 0 1px 0;
 }
 
-.seller_content_header_text {
+.seller_content_header_left {
+    display: flex;
+    flex-grow: 1;
     margin-right: auto;
     padding-top: 4px;
 }
 
+.seller_content_header_right {
+    display: flex;
+}
+
+.seller_content_header_text {
+    margin-right: 8px;
+}
+
+.seller_content_add {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+
+.seller_content_add > img {
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+}
+
 .seller_content_header_search_input {
     font-size: 1.15rem;
+    margin-top: 4px;
     width: 200px;
     height: 24px;
 }

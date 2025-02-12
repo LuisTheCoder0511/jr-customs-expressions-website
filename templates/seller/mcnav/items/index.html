@@ -6,24 +6,63 @@
     <title>JR's Seller Management - Items</title>
     <link rel="stylesheet" href="/static/styles/seller/mcnav/style.css" />
     <link rel="stylesheet" href="/static/styles/seller/mcnav/items/style.css" />
+    <link rel="stylesheet" href="/static/styles/seller/mcnav/items/item/style.css" />
 </head>
 <body>
     <div class="mcnav_seller_content">
         <div class="seller_content_header">
-            <div class="seller_content_header_text">
-                Items
+            <div class="seller_content_header_left">
+                <div class="seller_content_header_text">
+                    Items
+                </div>
+                <a class="seller_content_add">
+                    <img src="/static/assets/images/plus_icon.png" alt="Add Item"/>
+                </a>
             </div>
-            <div class="seller_content_header_search">
-                <label>
-                    <input class="seller_content_header_search_input"
-                           type="text"
-                           placeholder="Search Items">
-                </label>
+            <div class="seller_content_header_right">
+                <div class="seller_content_header_search">
+                    <label>
+                        <input class="seller_content_header_search_input"
+                               type="text"
+                               placeholder="Search for Item">
+                    </label>
+                </div>
             </div>
         </div>
         <div class="mcnav_seller_items">
+            <div class="seller_items_subheader">
+                <div class="select_box">
+                    <a class="select_box_left">
+                        <div class="select_box_left_box">
+                            <img src="/static/assets/images/checkmark.png" alt="checkmark">
+                        </div>
+                    </a>
+                    <a class="select_box_right">
+                        <img src="/static/assets/images/dropdown.png" alt="dropdown"/>
+                    </a>
+                </div>
 
+                <div class="select_edit_option">
+                    <a class="option">
+                        Edit
+                    </a>
+                    <a class="option">
+                        Copy
+                    </a>
+                    <a class="option">
+                        Disable
+                    </a>
+                    <a class="option">
+                        Delete
+                    </a>
+                </div>
+            </div>
+
+            <div id="seller_item_container">
+
+            </div>
         </div>
     </div>
 </body>
+<script src="/static/scripts/seller/mcnav/items/script.js"></script>
 </html>
