@@ -34,17 +34,24 @@ def __create_table__(table_name: str, args):
     cursor.execute(f"{prefix} {args}")
 
 
-def __select_all__(table_name: str, column_name: str = '*'):
+def __select_all__(table_name: str, limit: int, offset: int, column_name: str = '*'):
     global cursor
     cursor.row_factory = lambda curs, row: row
-    cursor.execute(f'SELECT {column_name} FROM {table_name}')
+    cursor.execute(f'SELECT {column_name} FROM {table_name} LIMIT {limit} OFFSET {offset}')
     return cursor.fetchall()
 
 
-def __select_list__(table_name: str, where_key: str, where_value: str):
+def __select_all_equal__(table_name: str, where_key: str, where_value: str):
     global cursor
     cursor.row_factory = lambda curs, row: row
     cursor.execute(f'SELECT * FROM {table_name} WHERE {where_key} = {where_value}')
+    return cursor.fetchall()
+
+
+def __select_all_like__(table_name: str, where_key: str, where_value: str):
+    global cursor
+    cursor.row_factory = lambda curs, row: row
+    cursor.execute(f"SELECT * FROM {table_name} WHERE {where_key} LIKE '%{where_value}%'")
     return cursor.fetchall()
 
 

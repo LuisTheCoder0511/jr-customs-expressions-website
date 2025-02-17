@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JR Expressions</title>
-    <link rel="stylesheet" href="../../../static/styles/seller/add/style.css" />
+    <link rel="stylesheet" href="/static/styles/seller/add/style.css" />
 </head>
 <body>
     <div class="popup-window">
         <div class="popup-title">
             <div class="popup-title-text">
-                Upload Item
+                Add Item
             </div>
         </div>
         <div class="popup-header">
@@ -27,17 +27,12 @@
             <div class="popup-group">
                 <div class="popup-image">
                     <div class="popup-text">
-                        Upload Image
+                        Image
                     </div>
-                    <input type="file" id="fileInput" style="display:none">
-                    <button onclick="openFile()" class="popup-img">
-                        <img src="../../../static/assets/images/upload_img.png" alt="Image"/>
-                    </button>
-                    <script>
-                        function openFile() {
-                            document.getElementById("fileInput").click()
-                        }
-                    </script>
+                    <input type="file" id="fileInput" style="display:none" accept="image/png">
+                    <a onclick="openFile()" class="popup-img">
+                        <img id="image_input" src="/static/assets/images/upload_img.png" alt="Image"/>
+                    </a>
                 </div>
             </div>
             <div class="popup-group">
@@ -56,14 +51,14 @@
                     <textarea class="input-text" id="description-text" name="text" placeholder="Description" rows="10" cols="10" wrap="soft"></textarea>
                 </div>
             </div>
-            <div class="popup-group">
-                <div class="popup-text">
-                    Type
-                </div>
-                <div class="input">
-                    <textarea class="input-text" id="type-text" name="text" placeholder="Type" rows="1" cols="10" wrap="soft"></textarea>
-                </div>
-            </div>
+<!--            <div class="popup-group">-->
+<!--                <div class="popup-text">-->
+<!--                    Category-->
+<!--                </div>-->
+<!--                <div class="input">-->
+<!--                    <textarea class="input-text" id="category-text" name="text" placeholder="Category" rows="1" cols="10" wrap="soft"></textarea>-->
+<!--                </div>-->
+<!--            </div>-->
             <div class="popup-group">
                 <div class="popup-text">
                     Price
@@ -80,18 +75,14 @@
                     <textarea class="input-text" id="quantity-text" name="text" placeholder="Quantity" rows="1" cols="10" wrap="soft"></textarea>
                 </div>
             </div>
-            <div class="upload-button" method="post">
-                <button id="upload-button-a">
-                    <div class="upload-button-div">
-                        Upload Button
-                    </div>
-                </button>
-            </div>
+            <a id="upload-button-a">
+                Upload Button
+            </a>
         </div>
         <div class="section-others">
-            
+
         </div>
     </div>
 </body>
-<script src="../../../static/scripts/seller/add/item/script.js"></script>
+<script src="/static/scripts/seller/add/item/script.js"></script>
 </html>

@@ -1,11 +1,12 @@
 
 class Item:
 
-    def __init__(self, name, description, categoryID, price, quantity, meta):
+    def __init__(self, name, description, image, categoryIDs, price, quantity, meta):
         self.ID = 0
         self.name = name
         self.description = description
-        self.categoryID = categoryID
+        self.image = image
+        self.categoryIDs = categoryIDs
         self.price = price
         self.quantity = quantity
         self.meta = meta
