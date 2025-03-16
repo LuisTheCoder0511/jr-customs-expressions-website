@@ -1,0 +1,1 @@
+user settings will be set in another page url called profile

@@ -10,16 +10,17 @@ def check_file():
     file = os.path.join(folder, "user.json")
 
     if os.path.exists(folder) and os.path.exists(file):
-        with open(file, "r") as f:
+        with (open(file, "r") as f):
             data = json.load(f)["account"]
 
             timestamp_now = int(time.time() / 60)
             timestamp_current = data["timestamp"]
             remember = data["remember"]
 
-            if timestamp_current and (not remember and timestamp_now - timestamp_current < 60) \
-                or (remember and timestamp_now - timestamp_current < 43_200):
-                return True
+            if timestamp_current:
+                timestamp = timestamp_now - timestamp_current
+                if (not remember and timestamp < 60) or (remember and timestamp < 43_200):
+                    return True
 
         return False
 
@@ -40,4 +41,3 @@ def check_file():
             os.startfile(folder)
 
     return False
-

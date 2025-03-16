@@ -8,48 +8,32 @@ const options = {
 let remember_me_value = true;
 
 function register_page(){
-    window.location.replace("/login/register")
+    window.location.replace("/register")
 }
 
 function login_page(){
-    window.location.replace("/login/")
+    window.location.replace("/login")
 }
 
-function register(){
-    username()
-        .then(r => )
-    // window.location.replace("/")
+function register(username, password){
+    submit(username, password).then()
+    window.location.replace("/")
 }
 
-function login(){
+function login(username, password){
+    submit(username, password).then()
     alert("Login intruder!")
     window.location.replace("/")
 }
 
-async function username(){
-    let username = document.getElementById("login_username").value
+async function submit(username, password){
+    console.log("submitting")
+    options.body = JSON.stringify({data: [username, password]})
 
-    options.body = JSON.stringify({username: username})
-
-    await fetch("/login/submit-username", options)
+    await fetch("/submit-data", options)
         .then(response => response.json())
         .then(data => console.log(data))
         .catch(error => console.error('Error:', error));
-
-    console.log(username)
-}
-
-async function password(){
-    let password = document.getElementById("login_password").value
-
-    options.body = JSON.stringify({password: password})
-
-    await fetch("/submit-password", options)
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
-
-    console.log(password)
 }
 
 function remember_me(){

@@ -18,7 +18,7 @@ a:hover {
     user-select: none;
     border-style: solid;
     border-color: darkgray;
-    border-width: 0 0 1px 0;
+    border-width: 0 0 2px 0;
 }
 
 .seller_content_header_left {
@@ -36,22 +36,24 @@ a:hover {
     margin-right: 8px;
 }
 
-.seller_content_add {
+.seller_content_button {
     width: 30px;
     height: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
     border-radius: 50%;
     border-style: solid;
     border-width: 2px;
     border-color: black;
 }
 
-.seller_content_add > img {
+.seller_content_button > img {
     padding: 5px;
     width: 20px;
     height: 20px;
 }
 
-.seller_content_header_search_input {
+#seller_content_header_search_input {
     font-size: 1.15rem;
     margin-top: 4px;
     width: 200px;

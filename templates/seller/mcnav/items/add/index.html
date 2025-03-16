@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JR's Seller Management - Items</title>
+    <link rel="stylesheet" href="/static/styles/seller/mcnav/style.css" />
+    <link rel="stylesheet" href="/static/styles/seller/mcnav/items/add/style.css" />
+    <link rel="stylesheet" href="/static/styles/seller/mcnav/items/style.css" />
+</head>
+<body>
+    <div class="mcnav_seller_content">
+        <div class="seller_content_header">
+            <div class="seller_content_header_left">
+                <div class="seller_content_header_text">
+                    Items
+                </div>
+                <a class="seller_content_button" onclick="changeIframe('items', '/home')">
+                    <img src="/static/assets/images/back.jpg" alt="Back to Item page"/>
+                </a>
+            </div>
+        </div>
+        <div id="mcnav_seller_items">
+            <div class="popup-title">
+                <div class="popup-title-text">
+                    Add Item
+                </div>
+            </div>
+            <div class="popup-group">
+                <div class="popup-image">
+                    <div class="popup-text">
+                        Image
+                    </div>
+                    <input type="file" id="fileInput" style="display:none" accept="image/png">
+                    <a onclick="openFile()" class="popup-img">
+                        <img id="image_input" src="/static/assets/images/upload_img.png" alt="Image"/>
+                    </a>
+                </div>
+            </div>
+            <div class="popup-group">
+                <div class="popup-text">
+                    Name
+                </div>
+                <div class="input">
+                    <textarea class="input-text" id="name-text" name="text" placeholder="Name" rows="1" cols="10" wrap="soft"></textarea>
+                </div>
+            </div>
+            <div class="popup-group">
+                <div class="popup-text">
+                    Description
+                </div>
+                <div class="input">
+                    <textarea class="input-text" id="description-text" name="text" placeholder="Description" rows="10" cols="10" wrap="soft"></textarea>
+                </div>
+            </div>
+            <div class="popup-group">
+                <div class="popup-text">
+                    Price
+                </div>
+                <div class="input">
+                    <textarea class="input-text" id="price-text" name="text" placeholder="Price" rows="1" cols="10" wrap="soft"></textarea>
+                </div>
+            </div>
+            <div class="popup-group">
+                <div class="popup-text">
+                    Quantity
+                </div>
+                <div class="input">
+                    <textarea class="input-text" id="quantity-text" name="text" placeholder="Quantity" rows="1" cols="10" wrap="soft"></textarea>
+                </div>
+            </div>
+            <a id="upload-button-a">
+                Upload Button
+            </a>
+        </div>
+    </div>
+</body>
+<script src="/scripts/frame_items/script.js"></script>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JR's Seller Management - Items</title>
+    <link rel="stylesheet" href="/static/styles/seller/mcnav/style.css" />
+    <link rel="stylesheet" href="/static/styles/seller/mcnav/items/home/style.css" />
+    <link rel="stylesheet" href="/static/styles/seller/mcnav/items/style.css" />
+</head>
+<body>
+    <div class="mcnav_seller_content">
+        <div class="seller_content_header">
+            <div class="seller_content_header_left">
+                <div class="seller_content_header_text">
+                    Items
+                </div>
+                <a class="seller_content_button" onclick="changeIframe('items', '/add')">
+                    <img src="/static/assets/images/plus_icon.png" alt="Add Item"/>
+                </a>
+                <a class="seller_content_button" onclick="refresh()">
+                    <img src="/static/assets/images/refresh.png" alt="Refresh"/>
+                </a>
+            </div>
+            <div class="seller_content_header_right">
+                <div class="seller_content_header_search">
+                    <label>
+                        <input id="seller_content_header_search_input"
+                               type="text"
+                               placeholder="Search for Item">
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div id="mcnav_seller_items">
+            <div class="seller_items_subheader">
+                <div class="select_edit_option">
+                    <a class="option" id="enable" onclick="switchEditState(1)">
+                        Activate
+                    </a>
+                    <a class="option" id="disable" onclick="switchEditState(2)">
+                        Deactivate
+                    </a>
+                    <a class="option" id="delete" onclick="switchEditState(3)">
+                        Delete
+                    </a>
+                </div>
+            </div>
+
+            <div id="seller_item_container">
+
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/scripts/frame_items/script.js"></script>
+</html>

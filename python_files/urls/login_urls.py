@@ -1,10 +1,10 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, jsonify
 import database
 
-blueprint = Blueprint('login', __name__, url_prefix='/login')
+blueprint = Blueprint('login', __name__)
 
 
-@blueprint.route("/")
+@blueprint.route("/login")
 def login():
     return navigate_url("login")
 
@@ -14,11 +14,15 @@ def register():
     return navigate_url("register")
 
 
-@blueprint.route("/submit-username")
-def submit_username():
-    pass
-
-
 def navigate_url(url):
     url = f"login_page/{url}/index.html"
     return render_template(url)
+
+
+@blueprint.route("/submit-data", methods=['POST', 'GET'])
+def submit_data():
+    json = request.get_json()
+    data = json["data"]
+    print(data)
+    status = "Success"
+    return jsonify({"data": data, "status": status})

@@ -35,7 +35,9 @@
                     </div>
                 </div>
             </div>
-            <a class="login_button" onclick="register()">
+            <a class="login_button" onclick="register(
+                document.getElementById('login_username').value,
+                document.getElementById('login_password').value)">
                 Register
             </a>
             <div class="third-party-logins">
