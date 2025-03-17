@@ -11,32 +11,34 @@
             <img src="/static/assets/images/home_logo.png" alt="logo"/>
         </a>
         <div id="header_icons">
-            <a id="header_items">
+            <a id="header_items" onclick="fetchContent('items')">
                 <div>
                     <img src="/static/assets/images/customer_home_items.png" alt="Items">
                 </div>
                 <label>Items</label>
             </a>
-            <a id="header_reviews">
+            <a id="header_reviews" onclick="fetchContent('reviews')">
                 <div>
                     <img src="/static/assets/images/customer_home_reviews.png" alt="Reviews">
                 </div>
                 <label>Reviews</label>
             </a>
-            <a id="header_about">
+            <a id="header_about" onclick="fetchContent('about')">
                 <div>
                     <img src="/static/assets/images/customer_home_about.png" alt="About">
                 </div>
                 <label>About</label>
             </a>
-            <a id="header_policies">
+            <a id="header_policies" onclick="fetchContent('policies')">
                 <div>
                     <img src="/static/assets/images/customer_home_policies.png" alt="Policies">
                 </div>
                 <label>Policies</label>
             </a>
         </div>
-        <a id="popup_icon"></a>
+        <a id="popup_icon">
+            <img src="/static/assets/images/account.png" alt="account"/>
+        </a>
         <div id="popup"></div>
     </div>
     <div id="content"></div>

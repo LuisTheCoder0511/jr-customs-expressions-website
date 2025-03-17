@@ -1,0 +1,7 @@
+* {
+    text-align: center;
+}
+
+#no_reviews > button {
+    scale: 150%;
+}
