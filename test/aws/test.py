@@ -1,4 +1,3 @@
-from api.bucket.aws import AWS
+from api.bucket.aws import aws
 
-aws = AWS()
 print(aws.s3.list_buckets())
