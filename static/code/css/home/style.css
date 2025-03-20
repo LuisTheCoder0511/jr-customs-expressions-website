@@ -15,7 +15,7 @@ a:hover {
 #header {
     padding: 8px 8px 0 8px;
     display: flex;
-    z-index: 1;
+    z-index: 2;
     box-shadow: 0 4px 4px rgb(0, 0, 0, 0.2);
 }
 
@@ -23,28 +23,28 @@ a:hover {
     display: flex;
     font-size: 1.05rem;
     margin: auto;
-}
 
-#header_icons > a {
-    border-style: solid;
-    border-width: 2px;
-    border-color: gray;
-    margin: 4px;
-    padding: 4px;
-    text-align: center;
-}
+    a {
+        border-style: solid;
+        border-width: 2px;
+        border-color: gray;
+        margin: 4px;
+        padding: 4px;
+        text-align: center;
 
-#header_icons > a > div {
-    margin: auto;
-    border-width: 2px;
-    border-style: solid;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-}
+        div {
+            margin: auto;
+            border-width: 2px;
+            border-style: solid;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+        }
 
-#header_icons > a > label {
-    cursor: pointer;
+        label {
+            cursor: pointer;
+        }
+    }
 }
 
 #header_items > div > img {
@@ -79,13 +79,13 @@ a:hover {
     margin: 8px;
     width: 56px;
     height: 56px;
-}
-
-#popup_icon > img {
-    margin: 8px;
-    width: 40px;
+    img {
+        margin: 8px;
+        width: 40px;
+    }
 }
 
 #content {
-    margin: 8px;
+    padding: 8px;
+    z-index: 1;
 }

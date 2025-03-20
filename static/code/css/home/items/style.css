@@ -1,0 +1,41 @@
+* {
+    text-align: center;
+
+    :focus {
+        outline: none
+    }
+}
+
+#search_box {
+    display: flex;
+    width: 290px;
+    height: 32px;
+    margin: auto;
+    border-radius: 20px;
+    border-width: 2px;
+    border-style: solid;
+    label > input {
+        border-style: none;
+        width: 250px;
+        text-align: left;
+        font-size: 1.2rem;
+        height: 32px;
+        padding: 8px;
+        background-color: transparent;
+    }
+
+    a {
+        width: 40px;
+        border-style: solid;
+        border-width: 0;
+        border-left-width: 2px;
+
+        img {
+            position: relative;
+            width: 25px;
+            height: 25px;
+            top: 3px;
+            right: 2px;
+        }
+    }
+}

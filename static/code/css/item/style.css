@@ -1,0 +1,24 @@
+.item_div {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    padding-bottom: 4px;
+    img {
+        width: 200px;
+    }
+    label {
+        padding-left: 2px;
+        text-align: left;
+        :not(.item_name) {
+            font-size: 1.05rem;
+        }
+    }
+    .item_name {
+        font-size: 1.35rem;
+        padding-top: 2px;
+        padding-bottom: 4px;
+    }
+    border-style: solid;
+    border-width: 2px;
+    border-color: gray;
+}
