@@ -2,4 +2,3 @@
 .idea
 __pycache__
 python_files/__pycache__
-env-files/database_keys.txt
