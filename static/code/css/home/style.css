@@ -6,6 +6,7 @@
 body {
     font-family: SalmaPro, serif;
     margin: 0;
+    user-select: none;
 }
 
 a:hover {

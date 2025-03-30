@@ -1,4 +1,5 @@
 from flask import Flask, render_template, jsonify, request
+import json
 
 from api.database import oracle
 from api import items
@@ -26,7 +27,8 @@ def database_content(name):
     if name == "items":
         data = items.api(request.json)
 
-    print(f"data:{data}")
+    json_data = json.dumps(data, indent=4)
+    print(f"Data: {json_data}")
     return jsonify(data)
 
 if __name__ == "__main__":

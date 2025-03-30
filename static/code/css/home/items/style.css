@@ -9,22 +9,22 @@
 #search_box {
     display: flex;
     width: 290px;
-    height: 32px;
+    height: 40px;
     margin: auto;
     border-radius: 20px;
     border-width: 2px;
     border-style: solid;
     label > input {
         border-style: none;
-        width: 250px;
+        width: 236px;
         text-align: left;
         font-size: 1.2rem;
-        height: 32px;
+        height: 24px;
         padding: 8px;
         background-color: transparent;
     }
 
-    a {
+    #search_enter {
         width: 40px;
         border-style: solid;
         border-width: 0;
@@ -34,8 +34,27 @@
             position: relative;
             width: 25px;
             height: 25px;
-            top: 3px;
+            top: 7px;
             right: 2px;
         }
     }
+}
+
+#item_filter {
+    margin: 24px 0;
+
+    a {
+        padding: 8px;
+        border-style: solid;
+        border-width: 2px;
+        background-color: white;
+    }
+
+    a:hover {
+        background-color: lightgreen;
+    }
+}
+
+#item_container {
+    overflow: auto;
 }

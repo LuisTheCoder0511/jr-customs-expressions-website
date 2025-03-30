@@ -1,12 +1,23 @@
+.item_box {
+    display: inline-block;
+    margin: 12px;
+}
+
 .item_div {
     display: flex;
     flex-direction: column;
     width: 200px;
     padding-bottom: 4px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: gray;
+
     img {
         width: 200px;
+        height: 200px;
     }
     label {
+        cursor: pointer;
         padding-left: 2px;
         text-align: left;
         :not(.item_name) {
@@ -14,11 +25,19 @@
         }
     }
     .item_name {
+        border-width: 0;
+        border-top-width: 2px;
+        border-color: gray;
+        border-style: solid;
         font-size: 1.35rem;
         padding-top: 2px;
         padding-bottom: 4px;
     }
-    border-style: solid;
-    border-width: 2px;
-    border-color: gray;
+}
+
+.item_div:hover {
+    background-color: skyblue;
+    img {
+        background-color: white;
+    }
 }

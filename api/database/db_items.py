@@ -8,6 +8,7 @@ def __create_table__():
                  f"Name VARCHAR(255),"
                  f"Price VARCHAR(255),"
                  f"Quantity INTEGER,"
+                 f"HasImage INTEGER CHECK (HasImage IN (0, 1)),"
                  f"Data CLOB CHECK (Data is JSON))")
     if database.__execute__(statement):
         print("Table created successfully")
@@ -53,9 +54,9 @@ def __select_one__(timestamp: int):
     return None
 
 
-def __insert__(timestamp: int, name: str, price: str, quantity: int, data):
-    statement = f"INSERT INTO {TABLE_NAME} (Timestamp, Name, Price, Quantity, Data) VALUES (:1, :2, :3, :4, :5)"
-    result = database.__execute__(statement, (timestamp, name, price, quantity, data))
+def __insert__(timestamp: int, name: str, price: str, quantity: int, has_image: int, data):
+    statement = f"INSERT INTO {TABLE_NAME} (Timestamp, Name, Price, Quantity, HasImage, Data) VALUES (:1, :2, :3, :4, :5, :6)"
+    result = database.__execute__(statement, (timestamp, name, price, quantity, has_image, data))
     if result:
         print("Inserted row successfully")
     else:
@@ -83,6 +84,10 @@ def __update_price__(timestamp: int, price: str):
 
 def __update_quantity__(timestamp: int, quantity: int):
     return _update(timestamp, f"Quantity = '{quantity}'")
+
+
+def __update_has_image__(timestamp: int, has_image: int):
+    return _update(timestamp, f"HasImage = '{has_image}'")
 
 
 def __update_data__(timestamp: int, data):

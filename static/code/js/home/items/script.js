@@ -1,3 +1,13 @@
+
+if (!window.isAnchorListenerAdded) {
+    document.addEventListener("click", e => {
+        if (e.target.tagName === "A") {
+            console.log("Clicked")
+        }
+    })
+    window.isAnchorListenerAdded = true;
+}
+
 async function loadTemplate() {
     if (itemTemplate !== "") return
     options.body = ""
@@ -6,15 +16,27 @@ async function loadTemplate() {
         .then(data => {
             itemTemplate = data
         })
+
+    document.getElementById("search_input").addEventListener("keypress", e => {
+        if (e.key === 'Enter'){
+            document.getElementById("search_enter").click()
+        }
+    })
 }
 
-function loadItems(){
+function loadItems(search_name){
+    if (search_name){
+        name = document.getElementById("search_input").value
+    } else {
+        name = ""
+    }
+
     options.body = JSON.stringify({
         sql_method: "select_all",
         offset: 0,
         limit: 5,
         data: {
-            name: ""
+            name: name
         }
     })
 
@@ -26,15 +48,34 @@ function loadItems(){
             return response.json();
         })
         .then(data => {
-            data.forEach(element => {
-                const item_div = document.createElement("div")
-                item_div.className = "item_div"
-                item_div.innerHTML = itemTemplate
-                item_div.children[1].textContent = element[1]
-                item_div.children[2].textContent = element[2]
-                item_div.children[3].textContent = `Quantity: ${element[3]}`
-                document.getElementById("item_content").appendChild(item_div)
-            })
+            if (document.getElementById("item_container") === null) return;
+
+            document.getElementById("item_container").innerHTML = ""
+
+            if (data.length === 0){
+                const labelP = document.createElement("p")
+                labelP.textContent = "There seems to be no items yet. Try refreshing the page."
+                document.getElementById("item_container").appendChild(labelP)
+            } else {
+                data.forEach(element => {
+                    const item_box = document.createElement("div")
+                    item_box.className = "item_box"
+
+                    const item_div = document.createElement("a")
+                    const timestamp = element["Timestamp"]
+                    item_div.className = "item_div"
+                    item_div.innerHTML = itemTemplate
+                    item_div.children[0].src = `https://luisthecoder-images-bucket.s3.amazonaws.com/uploads/${timestamp}.png`
+                    item_div.children[0].alt = timestamp
+                    item_div.children[1].textContent = element["Name"]
+                    item_div.children[2].textContent = element["Price"]
+                    item_div.children[3].textContent = `Quantity: ${element["Quantity"]}`
+
+                    item_box.appendChild(item_div)
+
+                    document.getElementById("item_container").appendChild(item_box)
+                })
+            }
             console.log(data)
         })
         .catch(error => {
@@ -42,5 +83,6 @@ function loadItems(){
         })
 }
 
-loadTemplate().then()
-loadItems()
+loadTemplate().then(() => {
+    loadItems(false)
+})

@@ -1,13 +1,20 @@
 <h1>Search for item</h1>
 <div id="search_box">
     <label>
-        <input type="text" placeholder="Search">
+        <input id="search_input" type="text" placeholder="Search">
     </label>
-    <a>
+    <a id="search_enter" onclick="loadItems(true)">
         <img src="/static/assets/images/search.png" alt="Search"/>
     </a>
 </div>
+<div id="item_filter">
+    <a id="filter_new">Brand New!</a>
+    <a id="filter_featured">Featured</a>
+    <a id="filter_categories">Categories</a>
+    <a id="filter_price">Price</a>
+    <a id="filter_quantity">Quantity</a>
+</div>
 <div id="item_content">
-    <p>There seems to be no items yet. Try refreshing the page.</p>
+    <div id="item_container"></div>
 </div>
 
