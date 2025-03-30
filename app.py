@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 import json
+import socket
 
 from api.database import oracle
 from api import items
@@ -32,6 +33,13 @@ def database_content(name):
     return jsonify(data)
 
 if __name__ == "__main__":
+
+    try:
+        ip_address = socket.gethostbyaddr("8.8.8.8")
+        print(f"Resolved IP Address: {ip_address}")
+    except socket.gaierror as e:
+        print(f"Failed to resolve Google host: {e}")
+
     oracle.__run__()
     PORT = 8001
     app.run(port=PORT, debug=True, use_reloader=False)
