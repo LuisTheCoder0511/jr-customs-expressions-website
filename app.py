@@ -35,7 +35,8 @@ def database_content(name):
 if __name__ == "__main__":
 
     try:
-        ip_address = socket.gethostbyaddr("8.8.8.8")
+        hostname = socket.gethostname()
+        ip_address = socket.gethostbyname(hostname)
         print(f"Resolved IP Address: {ip_address}")
     except socket.gaierror as e:
         print(f"Failed to resolve Google host: {e}")
