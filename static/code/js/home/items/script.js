@@ -65,7 +65,7 @@ function loadItems(search_name){
                     const timestamp = element["Timestamp"]
                     item_div.className = "item_div"
                     item_div.innerHTML = itemTemplate
-                    item_div.children[0].src = `https://luisthecoder-images-bucket.s3.amazonaws.com/uploads/${timestamp}.png`
+                    item_div.children[0].src = element["url"]
                     item_div.children[0].alt = timestamp
                     item_div.children[1].textContent = element["Name"]
                     item_div.children[2].textContent = element["Price"]

@@ -2,3 +2,7 @@
 .idea
 __pycache__
 python_files/__pycache__
+env_files/.env
+env_files/env_load.py
+test/env
+local_app.py

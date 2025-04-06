@@ -1,7 +1,7 @@
 import time
 import json
 
-from api.bucket.aws import aws
+from api.bucket.backblaze import backblaze
 from api.database import db_items
 
 
@@ -26,6 +26,9 @@ def __select_all__(offset: int, limit: int, name: str = ""):
             "HasImage": old_data[4],
             "MetaData": parsed_data
         }
+        if old_data[4] == 1:
+            new_data["url"] = backblaze.__get_url__(f"{old_data[0]}.png")
+
         select_all[index] = new_data
         index += 1
     benchmark_time = time.time() - benchmark_time
@@ -44,7 +47,7 @@ def api(request_json):
 
     elif sql_method == "insert":
         if db_items.__insert__(data["timestamp"], data["name"], data["price"], data["quantity"], data["has_image"], data["data"]):
-            if not data["has_image"] or aws.__upload__(data["filename"], data["timestamp"]):
+            if not data["has_image"] or backblaze.__upload__(data["filename"], data["timestamp"]):
                 return True
             print("Something went wrong! Removing item!")
             db_items.__delete__(data["timestamp"])

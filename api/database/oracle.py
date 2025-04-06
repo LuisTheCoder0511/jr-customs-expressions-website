@@ -1,5 +1,6 @@
 import threading
 import time
+import os
 
 import oracledb
 
@@ -15,15 +16,7 @@ class Database:
         self._username = username
 
     def _connect(self):
-        with open("env-files/database_keys.txt", "r") as file:
-            lines = file.readlines()
-            index = 0
-            while index < len(lines):
-                line = lines[index]
-                if self._username in line:
-                    self._password = line[line.index("=") + 1:]
-                    break
-                index += 1
+        self._password = os.getenv("ORACLE_KEY")
 
     def _open(self):
         self.idle_time = int(time.time())
@@ -53,6 +46,7 @@ class Database:
         print(f"Disconnecting from Oracle database...")
         self._connection.close()
         self._closed = True
+        self._password = ""
         print("Connection is closed!")
 
     def __row_factory__(self):

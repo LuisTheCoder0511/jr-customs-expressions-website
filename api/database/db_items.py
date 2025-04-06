@@ -1,6 +1,6 @@
 from api.database.oracle import database
 
-TABLE_NAME = "Item"
+TABLE_NAME = "Items"
 
 def __create_table__():
     statement = (f"CREATE TABLE {TABLE_NAME} ("
