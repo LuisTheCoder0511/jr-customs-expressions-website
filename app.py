@@ -9,5 +9,5 @@ app.register_blueprint(home_blueprint)
 if __name__ == "__main__":
     oracle.__run__()
     PORT = 8001
-    app.run(port=PORT, debug=True, use_reloader=False)
+    app.run(host='0.0.0.0', port=PORT, debug=True, use_reloader=False)
     oracle.__stop__()
