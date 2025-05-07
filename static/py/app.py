@@ -2,7 +2,7 @@ from flask import Flask
 
 from api.database import oracle
 from api.bucket.backblaze import backblaze
-from api.blueprints.home import blueprint as home_blueprint
+from api.blueprints.customer import blueprint as home_blueprint
 
 app = Flask(__name__)
 app.register_blueprint(home_blueprint)

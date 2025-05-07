@@ -4,5 +4,5 @@ __pycache__
 python_files/__pycache__
 env_files/.env
 env_files/env_load.py
-test/env
-local_app.py
+test
+static/py/local_app.py

@@ -1,8 +1,8 @@
 import time
 import json
 
-from api.bucket.backblaze import backblaze
-from api.database import db_items
+from static.py.api.bucket.backblaze import backblaze
+from static.py.api.database import db_items
 
 
 def __select_all__(offset: int, limit: int, name: str = ""):
@@ -31,6 +31,7 @@ def __select_all__(offset: int, limit: int, name: str = ""):
 
         select_all[index] = new_data
         index += 1
+
     benchmark_time = time.time() - benchmark_time
     print(f"Benchmark time: {benchmark_time} ms")
     return select_all

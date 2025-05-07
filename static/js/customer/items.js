@@ -64,6 +64,7 @@ function loadItems(search_name){
                     const item_div = document.createElement("a")
                     const timestamp = element["Timestamp"]
                     item_div.className = "item_div"
+                    item_div.href = "/home/items/item"
                     item_div.innerHTML = itemTemplate
                     item_div.children[0].src = element["url"]
                     item_div.children[0].alt = timestamp

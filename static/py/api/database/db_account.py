@@ -1,6 +1,6 @@
 import json
 
-from api.database.oracle import database
+from static.py.api.database.oracle import database
 
 TABLE_NAME = "Accounts"
 

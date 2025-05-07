@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify
-from api import items
+from static.py.api import items
 
 import json
 
@@ -7,7 +7,7 @@ blueprint = Blueprint('home', __name__)
 
 @blueprint.route("/")
 def index():
-    return render_template("home/index.html")
+    return render_template("home/../../templates/customer/base.html")
 
 @blueprint.route("/content/<name>")
 def home_content(name):
@@ -18,6 +18,11 @@ def home_content(name):
 @blueprint.route("/item")
 def item():
     template = f"item/index.html"
+    return render_template(template)
+
+@blueprint.route("/home/items/item")
+def item_home():
+    template = f"home/items/item/index.html"
     return render_template(template)
 
 @blueprint.route("/api/database/<name>", methods=["POST"])

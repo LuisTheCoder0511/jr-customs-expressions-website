@@ -1,6 +1,5 @@
 let previousContent = null
 let itemTemplate = ""
-const prefix = "/static/code/"
 const options = {
     method: 'POST',
     headers: {
@@ -12,12 +11,12 @@ function fetchHomeContent(name){
     document.getElementById("content").innerHTML = ""
 
     if (previousContent !== null){
-        unloadCSS(`${prefix}css/home/${previousContent}/style.css`)
-        unloadScript(`${prefix}js/home/${previousContent}/script.js`)
+        unloadCSS(`${previousContent}/style.css`)
+        unloadScript(`${previousContent}/script.js`)
     }
 
-    loadCSS(`${prefix}css/home/${name}/style.css`)
-    loadScript(`${prefix}js/home/${name}/script.js`)
+    loadCSS(`${name}/style.css`)
+    loadScript(`${name}/script.js`)
 
     fetch(`/content/${name}`)
         .then(r => r.text())
@@ -44,10 +43,14 @@ function unloadCSS() {
 }
 
 function loadScript(url) {
-  const script = document.createElement('script')
-  script.src = url
-  script.id = "dynamicScript"
-  document.head.appendChild(script)
+    try {
+        const script = document.createElement('script')
+        script.src = url
+        script.id = "dynamicScript"
+        document.head.appendChild(script)
+    } catch (error) {
+        print("Script doesn't exist")
+    }
 }
 
 function unloadScript() {
