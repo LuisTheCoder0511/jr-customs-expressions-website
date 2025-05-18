@@ -90,3 +90,9 @@ a:hover {
     padding: 8px;
     z-index: 1;
 }
+
+#home_logo {
+    display: flex;
+    width: 300px;
+    margin: auto;
+}

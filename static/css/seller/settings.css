@@ -1,0 +1,39 @@
+#seller_management_settings {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 100%;
+}
+
+.settings_section {
+    margin: 8px;
+    padding: 8px;
+    width: 248px;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: gray;
+}
+
+.settings_section_header {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.settings_section_input {
+    margin: 16px 0;
+}
+
+.settings_section_input_header {
+    font-size: 1.05rem;
+    font-weight: bold;
+    margin: 4px 0;
+}
+
+.settings_section_input_text {
+
+}
+
+.settings_section_input_dropdown {
+
+}

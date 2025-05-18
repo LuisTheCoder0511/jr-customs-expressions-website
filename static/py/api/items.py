@@ -38,6 +38,8 @@ def __select_all__(offset: int, limit: int, name: str = ""):
 
 
 def api(request_json):
+    db_items.__create_table__()
+
     data = request_json.get("data")
     sql_method = request_json.get("sql_method")
     if sql_method == "select_all":

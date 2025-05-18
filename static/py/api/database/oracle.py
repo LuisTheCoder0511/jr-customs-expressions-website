@@ -4,19 +4,23 @@ import os
 
 import oracledb
 
-service_name = "jrcustomsexpressions_low"
-service = f"g07567ddef9372a_{service_name}.adb.oraclecloud.com"
-dsn = f"(description=(retry_count=3)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name={service}))(security=(ssl_server_dn_match=yes)))"
-
 class Database:
-    def __init__(self, username):
+    def __init__(self):
+        self._local = False
+        self._dsn = ""
         self._terminate = False
         self._closed = True
         self._connection: oracledb.Connection
-        self._username = username
+        self._username = ""
+
 
     def _connect(self):
-        self._password = os.getenv("ORACLE_KEY")
+        if self._local:
+            self._username = "SYSTEM"
+            self._password = os.getenv("ORACLE_LOCAL_KEY")
+        else:
+            self._username = "ADMIN"
+            self._password = os.getenv("ORACLE_KEY")
 
     def _open(self):
         self.idle_time = int(time.time())
@@ -25,7 +29,9 @@ class Database:
             try:
                 print(f"Connecting to Oracle database...")
                 self._connect()
-                self._connection = oracledb.connect(user=self._username, password=self._password, dsn=dsn)
+                self._connection = oracledb.connect(user=self._username,
+                                                    password=self._password,
+                                                    dsn=self._dsn)
                 print(f"Connection is open!")
                 self._closed = False
             except Exception as e:
@@ -74,7 +80,14 @@ class Database:
             return False
         return True
 
-    def run(self):
+    def run(self, local):
+        self._local = local
+        if not self._local:
+            service_name = "jrcustomsexpressions_low"
+            service = f"g07567ddef9372a_{service_name}.adb.oraclecloud.com"
+            self._dsn = f"(description=(retry_count=3)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.us-ashburn-1.oraclecloud.com))(connect_data=(service_name={service}))(security=(ssl_server_dn_match=yes)))"
+        else:
+            self._dsn = "localhost/XEPDB1"
         self._open()
         thread = threading.Thread(target=self._idle_check)
         thread.daemon = True
@@ -84,10 +97,10 @@ class Database:
         self._terminate = True
         self._close()
 
-database = Database("ADMIN")
+database = Database()
 
-def __run__():
-    database.run()
+def __run__(local):
+    database.run(local)
 
 def __stop__():
     database.terminate()

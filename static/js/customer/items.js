@@ -8,10 +8,12 @@ if (!window.isAnchorListenerAdded) {
     window.isAnchorListenerAdded = true;
 }
 
+replacement()
+
 async function loadTemplate() {
     if (itemTemplate !== "") return
     options.body = ""
-    await fetch("/item")
+    await fetch("/customer/divs/item")
         .then(response => response.text())
         .then(data => {
             itemTemplate = data
@@ -40,7 +42,7 @@ function loadItems(search_name){
         }
     })
 
-    fetch("api/database/items", options)
+    fetch("api/items", options)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`)
@@ -64,7 +66,10 @@ function loadItems(search_name){
                     const item_div = document.createElement("a")
                     const timestamp = element["Timestamp"]
                     item_div.className = "item_div"
-                    item_div.href = "/home/items/item"
+                    item_div.id = `item=${timestamp}`
+                    item_div.onclick = (() => {
+                        fetchContent("item", `?id=${timestamp}`)
+                    })
                     item_div.innerHTML = itemTemplate
                     item_div.children[0].src = element["url"]
                     item_div.children[0].alt = timestamp

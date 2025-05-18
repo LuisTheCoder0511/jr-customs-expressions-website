@@ -7,9 +7,9 @@ const options = {
 }
 
 function fetchContent(name, params = null){
-    const context = `customer/${name}`
+    const context = `seller/${name}`
     let location = window.location.toString()
-    const index = location.lastIndexOf("customer")
+    const index = location.lastIndexOf("seller")
 
     if (index !== -1){
         location = location.slice(0, index)
@@ -23,6 +23,6 @@ function fetchContent(name, params = null){
 }
 
 function replacement(){
-    document.getElementById("content").innerHTML = document.getElementById("replace_content").innerHTML
-    document.getElementById("replace_content").remove()
+    document.getElementById("seller_management_content").innerHTML = document.getElementById("seller_management_replace_content").innerHTML
+    document.getElementById("seller_management_replace_content").remove()
 }

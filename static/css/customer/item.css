@@ -1,0 +1,30 @@
+#item_current_div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#item_current_img > img {
+    width: 256px;
+}
+
+#item_current_name {
+    font-size: 1.35rem;
+}
+
+#item_current_div > div:not(#item_current_name) {
+    font-size: 1.2rem;
+}
+
+#item_current_reviews_stars {
+    margin: 4px auto;
+    background-color: darkgray;
+    border-radius: 20px;
+    width: 200px;
+}
+
+.review_star {
+    position: relative;
+    top: 2px;
+    width: 32px;
+}

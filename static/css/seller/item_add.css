@@ -1,0 +1,68 @@
+#seller_management_item_add {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 8px 0
+}
+
+.div_input {
+    width: 230px;
+    margin: 8px 16px;
+
+    div {
+        margin: 0;
+    }
+
+    label > textarea {
+        margin: 4px 0;
+        border-radius: 8px;
+        border-style: solid;
+        border-color: dimgray;
+        padding: 4px;
+        width: 100%;
+        resize: none;
+        font-size: 1rem;
+        text-wrap: wrap;
+        overflow: hidden;
+    }
+}
+
+#nameInput {
+    height: 54px;
+}
+
+#priceInput, #quantityInput {
+    height: 20px;
+}
+
+#descriptionInput, #categoriesInput {
+    height: 168px;
+}
+
+#preview {
+    width: 230px;
+    margin: 8px 0;
+    border-style: solid;
+    border-width: 2px;
+    border-color: dimgray;
+}
+
+#preview:hover {
+    cursor: pointer;
+}
+
+#item_add_upload {
+    display: flex;
+    width: 80px;
+    height: 40px;
+    margin: auto;
+    border-radius: 10px;
+    border-color: gray;
+    border-width: 2px;
+    border-style: solid;
+    div {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        top: 10px;
+    }
+}

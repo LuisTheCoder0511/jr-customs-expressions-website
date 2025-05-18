@@ -1,0 +1,67 @@
+<div id="seller_management_replace_content">
+    <div id="seller_management_content_header">
+        <div id="seller_management_content_title">
+            Add Item
+        </div>
+    </div>
+    <div id="seller_management_content_body">
+        <div id="seller_management_item_add">
+            <div class="div_input" id="item_add_image">
+                <div id="item_add_image_header">
+                    Image
+                </div>
+                <label for="imageInput" id="item_add_image_input">
+                    <input type="file" id="imageInput" hidden="hidden" accept="image/*">
+                    <img id="preview" src="/static/assets/images/upload_img.png" alt="preview"/>
+                </label>
+            </div>
+            <div class="div_input" id="item_add_name">
+                <div id="item_add_name_header">
+                    Name
+                </div>
+                <label for="nameInput" id="item_add_name_input">
+                    <textarea id="nameInput" maxlength="50"></textarea>
+                </label>
+            </div>
+            <div class="div_input" id="item_add_description">
+                <div id="item_add_description_header">
+                    Description
+                </div>
+                <label for="descriptionInput" id="item_add_description_input">
+                    <textarea id="descriptionInput" maxlength="200"></textarea>
+                </label>
+            </div>
+            <div class="div_input" id="item_add_price">
+                <div id="item_add_price_header">
+                    Price
+                </div>
+                <label for="priceInput" id="item_add_price_input">
+                    <textarea id="priceInput" maxlength="6"></textarea>
+                </label>
+            </div>
+            <div class="div_input" id="item_add_quantity">
+                <div id="item_add_quantity_header">
+                    Quantity
+                </div>
+                <label for="quantityInput" id="item_add_quantity_input">
+                    <textarea id="quantityInput" maxlength="3"></textarea>
+                </label>
+            </div>
+            <div class="div_input" id="item_add_categories">
+                <div id="item_add_categories_header">
+                    Categories
+                </div>
+                <label for=categoriesInput id="item_add_categories_input">
+                    <textarea id="categoriesInput" maxlength="200"></textarea>
+                </label>
+            </div>
+        </div>
+        <a id="item_add_upload">
+            <div>
+                Upload
+            </div>
+        </a>
+    </div>
+</div>
+<script src="/static/js/seller/item_add.js"></script>
+<link rel="stylesheet" href="/static/css/seller/item_add.css"/>
