@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JR Customs Expressions</title>
     <link rel="stylesheet" href="/static/css/customer/base.css"/>
-    <link rel="stylesheet" href="/static/css/customer/item_div.css"/>
 </head>
 <body>
     <div id="header">
@@ -13,25 +12,25 @@
             <img src="/static/assets/images/home_logo.png" alt="logo"/>
         </a>
         <div id="header_icons">
-            <a id="header_items" onclick="fetchContent('items')">
+            <a id="header_items" onclick="fetchCustomerContent('content/items')">
                 <div>
                     <img src="/static/assets/images/customer_home_items.png" alt="Items">
                 </div>
                 Items
             </a>
-            <a id="header_reviews" onclick="fetchContent('reviews')">
+            <a id="header_reviews" onclick="fetchCustomerContent('content/reviews')">
                 <div>
                     <img src="/static/assets/images/customer_home_reviews.png" alt="Reviews">
                 </div>
                 Reviews
             </a>
-            <a id="header_about" onclick="fetchContent('about')">
+            <a id="header_about" onclick="fetchCustomerContent('content/about')">
                 <div>
                     <img src="/static/assets/images/customer_home_about.png" alt="About">
                 </div>
                 About
             </a>
-            <a id="header_policies" onclick="fetchContent('policies')">
+            <a id="header_policies" onclick="fetchCustomerContent('content/policies')">
                 <div>
                     <img src="/static/assets/images/customer_home_policies.png" alt="Policies">
                 </div>

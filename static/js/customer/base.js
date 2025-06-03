@@ -1,12 +1,8 @@
-let itemTemplate = ""
 const options = {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    }
+    method: 'POST'
 }
 
-function fetchContent(name, params = null){
+function fetchCustomerContent(name, params = null){
     const context = `customer/${name}`
     let location = window.location.toString()
     const index = location.lastIndexOf("customer")
@@ -22,7 +18,7 @@ function fetchContent(name, params = null){
     window.location.href = newURL
 }
 
-function replacement(){
+function customerReplacement(){
     document.getElementById("content").innerHTML = document.getElementById("replace_content").innerHTML
     document.getElementById("replace_content").remove()
 }

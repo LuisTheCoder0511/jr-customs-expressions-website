@@ -63,5 +63,8 @@
 }
 
 #item_container {
-    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    margin: auto;
 }

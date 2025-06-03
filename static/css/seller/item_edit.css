@@ -10,6 +10,7 @@
 
     div {
         margin: 0;
+        font-size: 1.15rem;
     }
 
     label > textarea {
@@ -26,7 +27,7 @@
     }
 }
 
-#nameInput {
+#nameInput, #categoriesInput {
     height: 54px;
 }
 
@@ -34,7 +35,7 @@
     height: 20px;
 }
 
-#descriptionInput, #categoriesInput {
+#descriptionInput {
     height: 168px;
 }
 
@@ -65,4 +66,45 @@
         text-align: center;
         top: 10px;
     }
+}
+
+.category_box {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    border-width: 2px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: gray;
+}
+
+.category_box_text {
+    position: relative;
+    font-size: 1.05rem;
+    padding: 4px;
+    border-width: 0;
+    border-right-width: 2px;
+    border-color: gray;
+    border-style: solid;
+}
+
+.category_box_img {
+    position: relative;
+    margin: 4px;
+    width: 16px;
+}
+
+.category_box_delete {
+    display: flex;
+}
+
+.category_box_click {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin: auto 4px;
+}
+
+.category_box_click:hover {
+    background-color: lightgray;
 }

@@ -19,9 +19,9 @@ class BackBlaze:
     def _connect(self):
         self._bucket = self._b2_api.get_bucket_by_name(self._bucket_name)
 
-    def __upload__(self, local_filename, global_filename):
+    def __upload__(self, file, filename):
         try:
-            self._bucket.upload_local_file(local_filename, global_filename)
+            self._bucket.upload_bytes(file.read(), filename)
         except Exception as e:
             print(e)
             return False

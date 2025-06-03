@@ -1,12 +1,8 @@
-let itemTemplate = ""
 const options = {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    }
+    method: 'POST'
 }
 
-function fetchContent(name, params = null){
+function fetchSellerContent(name, params = null){
     const context = `seller/${name}`
     let location = window.location.toString()
     const index = location.lastIndexOf("seller")
@@ -22,7 +18,7 @@ function fetchContent(name, params = null){
     window.location.href = newURL
 }
 
-function replacement(){
+function sellerReplacement(){
     document.getElementById("seller_management_content").innerHTML = document.getElementById("seller_management_replace_content").innerHTML
     document.getElementById("seller_management_replace_content").remove()
 }

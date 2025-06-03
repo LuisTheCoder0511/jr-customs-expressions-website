@@ -8,22 +8,49 @@ if (!window.isAnchorListenerAdded) {
     window.isAnchorListenerAdded = true;
 }
 
-replacement()
+document.getElementById("search_input").addEventListener("keypress", e => {
+    if (e.key === 'Enter'){
+        document.getElementById("search_enter").click()
+    }
+})
 
-async function loadTemplate() {
-    if (itemTemplate !== "") return
-    options.body = ""
-    await fetch("/customer/divs/item")
-        .then(response => response.text())
-        .then(data => {
-            itemTemplate = data
-        })
+customerReplacement()
 
-    document.getElementById("search_input").addEventListener("keypress", e => {
-        if (e.key === 'Enter'){
-            document.getElementById("search_enter").click()
-        }
+function addItemTemplate(element, itemTemplate){
+    const item_box = document.createElement("div")
+    item_box.className = "item_box"
+
+    const item_div = document.createElement("a")
+    const timestamp = element["Timestamp"]
+    item_div.className = "item_div"
+    item_div.id = `item=${timestamp}`
+    item_div.onclick = (() => {
+        fetchCustomerContent("content/item", `?id=${timestamp}`)
     })
+    item_div.innerHTML = itemTemplate
+    if (element["url"] !== undefined){
+        item_div.children[0].src = element["url"]
+    }
+    item_div.children[0].alt = timestamp
+    item_div.children[1].textContent = element["Name"]
+    item_div.children[2].textContent = element["Price"]
+    item_div.children[3].textContent = `Quantity: ${element["Quantity"]}`
+
+    item_box.appendChild(item_div)
+
+    document.getElementById("item_container").appendChild(item_box)
+}
+
+function loadTemplate(element) {
+    let data = ""
+    const itemTemplate = async () => {
+        const response = await fetch("/customer/template/item_template")
+        return data = await response.text()
+    }
+    itemTemplate().then(data => {
+        addItemTemplate(element, data)
+    })
+    return data
 }
 
 function loadItems(search_name){
@@ -33,16 +60,20 @@ function loadItems(search_name){
         name = ""
     }
 
-    options.body = JSON.stringify({
-        sql_method: "select_all",
-        offset: 0,
-        limit: 5,
+    const json_form = new FormData
+    const json_object = {
         data: {
             name: name
-        }
-    })
+        },
+        sql_method: "select_all",
+        offset: 0,
+        limit: 5
+    }
 
-    fetch("api/items", options)
+    json_form.append("data", JSON.stringify(json_object))
+    options.body = json_form
+
+    fetch("/customer/api/items", options)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`)
@@ -60,35 +91,13 @@ function loadItems(search_name){
                 document.getElementById("item_container").appendChild(labelP)
             } else {
                 data.forEach(element => {
-                    const item_box = document.createElement("div")
-                    item_box.className = "item_box"
-
-                    const item_div = document.createElement("a")
-                    const timestamp = element["Timestamp"]
-                    item_div.className = "item_div"
-                    item_div.id = `item=${timestamp}`
-                    item_div.onclick = (() => {
-                        fetchContent("item", `?id=${timestamp}`)
-                    })
-                    item_div.innerHTML = itemTemplate
-                    item_div.children[0].src = element["url"]
-                    item_div.children[0].alt = timestamp
-                    item_div.children[1].textContent = element["Name"]
-                    item_div.children[2].textContent = element["Price"]
-                    item_div.children[3].textContent = `Quantity: ${element["Quantity"]}`
-
-                    item_box.appendChild(item_div)
-
-                    document.getElementById("item_container").appendChild(item_box)
+                    loadTemplate(element)
                 })
             }
-            console.log(data)
         })
         .catch(error => {
             console.error("There was a problem with the fetch operation:", error)
         })
 }
 
-loadTemplate().then(() => {
-    loadItems(false)
-})
+loadItems(false)

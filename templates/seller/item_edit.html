@@ -1,7 +1,7 @@
 <div id="seller_management_replace_content">
     <div id="seller_management_content_header">
         <div id="seller_management_content_title">
-            Add Item
+            New Item
         </div>
     </div>
     <div id="seller_management_content_body">
@@ -12,7 +12,7 @@
                 </div>
                 <label for="imageInput" id="item_add_image_input">
                     <input type="file" id="imageInput" hidden="hidden" accept="image/*">
-                    <img id="preview" src="/static/assets/images/upload_img.png" alt="preview"/>
+                    <img id="preview" src="/static/assets/images/upload_img.png" alt="preview" data-has-image="0"/>
                 </label>
             </div>
             <div class="div_input" id="item_add_name">
@@ -52,7 +52,7 @@
                     Categories
                 </div>
                 <label for=categoriesInput id="item_add_categories_input">
-                    <textarea id="categoriesInput" maxlength="200"></textarea>
+                    <textarea id="categoriesInput" maxlength="50"></textarea>
                 </label>
             </div>
         </div>
@@ -63,5 +63,5 @@
         </a>
     </div>
 </div>
-<script src="/static/js/seller/item_add.js"></script>
-<link rel="stylesheet" href="/static/css/seller/item_add.css"/>
+<script src="/static/js/seller/item_edit.js"></script>
+<link rel="stylesheet" href="/static/css/seller/item_edit.css"/>

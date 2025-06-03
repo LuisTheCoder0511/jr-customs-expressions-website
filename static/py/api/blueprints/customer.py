@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify, redirect
 from static.py.api import items
 
 import json
@@ -7,26 +7,27 @@ blueprint = Blueprint('customer', __name__, template_folder='templates', static_
 
 @blueprint.route("/")
 def index():
-    return render_template("customer/base.html")
+    return redirect("/customer/content/items")
 
-@blueprint.route("/customer/<name>", methods=['GET'])
+@blueprint.route("/customer/content/<name>", methods=['GET'])
 def customer_content(name):
-    header = index()
+    header = render_template("customer/base.html")
     template = f"customer/{name}.html"
-    print("Template:", template)
+    print(template)
     body = render_template(template)
     return f"{header}{body}"
 
-@blueprint.route("/customer/divs/item")
-def item_div():
-    template = "customer/item_div.html"
+@blueprint.route("/customer/template/<name>")
+def customer_template(name):
+    template = f"customer/{name}.html"
+    print(template)
     return render_template(template)
 
 @blueprint.route("/customer/api/<name>", methods=["POST"])
-def database_content(name):
+def customer_api(name):
     data = {}
     if name == "items":
-        data = items.api(request.json)
+        data = items.api(request.form, None)
 
     json_data = json.dumps(data, indent=4)
     print(f"Data: {json_data}")

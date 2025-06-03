@@ -14,56 +14,6 @@
 #seller_management_items_container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    width: 100%;
+    margin: auto;
 }
-
-.item_template {
-    margin: 16px;
-}
-
-.item_div {
-    border-style: solid;
-    border-width: 2px;
-    display: flex;
-    flex-direction: column;
-    img {
-        width: 200px;
-    }
-}
-
-.item_div_selectables {
-    position: absolute;
-    flex-direction: row;
-    width: 192px;
-    margin: 8px 4px;
-}
-
-.item_div_select, .item_div_feature {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-
-    img {
-        margin: 4px;
-        width: 24px;
-    }
-}
-
-.item_div_select {
-    float: left;
-}
-
-.item_div_feature {
-    float: right;
-}
-
-.item_div_feature:hover, .item_div_select:hover {
-    background-color: lightgray;
-}
-
-.item_div_sub {
-    padding: 8px 4px;
-    border-style: solid;
-    border-width: 2px 0 0 0;
-}
-

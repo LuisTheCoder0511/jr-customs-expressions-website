@@ -3,43 +3,17 @@
         <div id="seller_management_content_title">
             Items
         </div>
-        <a id="seller_management_content_add" onclick="fetchContent('item_add')">
+        <a id="seller_management_content_add" onclick="fetchSellerContent('content/item_edit')">
             <img src="/static/assets/images/plus_icon.png" alt="add"/>
         </a>
     </div>
     <div id="seller_management_content_body">
-        <div id="seller_management_items">
-            <div id="seller_management_items_select">
+<!--        <div id="seller_management_items_select">-->
 
-            </div>
-            <div id="seller_management_items_container">
-                <a class="item_template" onclick="fetchContent('item')">
-                    <div class="item_div">
-                        <div class="item_div_selectables">
-                            <span class="item_div_select" onclick="select()">
-                                <img src="/static/assets/images/checkmark.png" alt="select"/>
-                            </span>
-                            <span class="item_div_feature" onclick="feature()">
-                                <img src="/static/assets/images/feature.png" alt="feature"/>
-                            </span>
-                        </div>
-                        <img src="/static/assets/images/blank%20highlight.jpg" alt="item"/>
-                        <div class="item_div_sub">
-                            <div class="item_div_name">
-                                Item Name
-                            </div>
-                            <div class="item_div_quantity">
-                                In stock
-                            </div>
-                            <div class="item_div_price">
-                                $4.99
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
+<!--        </div>-->
+        <div id="seller_management_items_container"></div>
     </div>
 </div>
-<script src="/static/js/seller/items.js"></script>
 <link rel="stylesheet" href="/static/css/seller/items.css"/>
+<link rel="stylesheet" href="/static/css/seller/item_template.css"/>
+<script src="/static/js/seller/items.js"></script>

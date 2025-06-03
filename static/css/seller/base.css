@@ -19,7 +19,7 @@ a:hover {
     position: fixed;
     width: 184px;
     height: 100%;
-    z-index: 2;
+    z-index: 3;
     border-style: solid;
     border-width: 0 2px 0 0;
 }
@@ -38,8 +38,11 @@ a:hover {
 .seller_management_clickable {
     display: flex;
     flex-direction: row;
-    padding: 3px 0 3px 8px;
+    padding: 5px 0 5px 8px;
     font-size: 1.2rem;
+    border-width: 1px 0;
+    border-style: solid;
+    border-color: gray;
     img {
         width: 32px;
     }
@@ -55,6 +58,14 @@ a:hover {
     background-color: lightgray;
 }
 
+#seller_management_dashboard {
+    border-top-width: 2px;
+}
+
+#seller_management_settings {
+    border-bottom-width: 2px;
+}
+
 #seller_management_content {
     position: relative;
     left: 184px;
@@ -62,7 +73,7 @@ a:hover {
 
 #seller_management_content_header {
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     width: 100%;
     display: flex;
     padding: 16px 0 16px 8px;
@@ -77,8 +88,10 @@ a:hover {
 }
 
 #seller_management_content_body {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     top: 64px;
     margin: 8px;
-    z-index: 0;
+    z-index: 1;
 }
