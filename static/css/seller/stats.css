@@ -1,0 +1,81 @@
+#stats_items {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 8px auto;
+    font-size: 1.15rem;
+}
+
+#stats_items_header {
+    display: flex;
+    flex-direction: row;
+    border-style: solid;
+    border-width: 2px 0 0 2px;
+    border-color: gray;
+}
+
+#stats_items_header_item {
+    width: 242px;
+    padding: 8px 0 8px 4px;
+    margin-left: 4px;
+    border-style: solid;
+    border-width: 0 2px 0 0;
+    border-color: gray;
+}
+
+.stats_items_header_data {
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: row;
+    width: 70px;
+    border-style: solid;
+    border-width: 0 2px 0 0;
+    border-color: gray;
+    div {
+        margin: auto;
+    }
+}
+
+.stats_items_template {
+    border-style: solid;
+    border-color: gray;
+    border-width: 2px 0 2px 0;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: row;
+    height: 75px;
+}
+
+.stats_items_item {
+    display: flex;
+    flex-direction: row;
+    width: 250px;
+    border-style: solid;
+    border-width: 0 2px 0 2px;
+    border-color: gray;
+}
+
+.stats_items_img {
+    width: 75px;
+    border-style: solid;
+    border-width: 0 2px 0 0;
+    border-color: gray;
+}
+
+.stats_items_name {
+    margin: auto;
+}
+
+.stats_items_data {
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: row;
+    height: 75px;
+    width: 70px;
+    border-style: solid;
+    border-width: 0 2px 0 0;
+    border-color: gray;
+    div {
+        margin: auto;
+    }
+}

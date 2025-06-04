@@ -16,6 +16,8 @@ a:hover {
 }
 
 #seller_management_sidebar {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     width: 184px;
     height: 100%;
