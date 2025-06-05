@@ -1,0 +1,133 @@
+@font-face {
+    font-family: SalmaPro;
+    src: url("/static/assets/fonts/SalmaproMedium-0Wooo.otf") format("opentype");
+}
+
+body {
+    background-image: url("/static/assets/images/bg.jpg");
+    font-family: SalmaPro, serif;
+    margin: 0;
+    user-select: none;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+#header {
+    padding: 8px;
+    display: flex;
+    z-index: 1;
+    box-shadow: 0 4px 4px rgb(0, 0, 0, 0.2);
+
+    #buttons {
+        display: flex;
+        font-size: 1.05rem;
+        margin: auto;
+
+        a {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+
+            img {
+                border-radius: 50%;
+                width: 80px;
+                height: 80px;
+            }
+        }
+    }
+
+    #account {
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 50%;
+        margin: 8px;
+        width: 42px;
+        height: 42px;
+
+        img {
+            width: 42px;
+        }
+    }
+}
+
+#welcome {
+    background-color: rgb(255, 230, 230, 255);
+    padding: 8px;
+    z-index: 0;
+}
+
+#home_logo {
+    display: flex;
+    width: 300px;
+    margin: auto;
+}
+
+#products {
+    border-style: solid;
+    border-color: darkgray;
+    border-width: 2px 0;
+}
+
+#products_header {
+    margin: 12px;
+
+    #products_header_title {
+        font-size: 1.15rem;
+        font-weight: bold;
+        margin: 8px;
+    }
+
+    #products_header_input {
+        display: flex;
+        justify-content: space-between;
+
+        #products_header_search {
+            display: flex;
+            margin: 0 8px;
+
+            #products_header_search_button {
+                width: 32px;
+                height: 32px;
+                border-width: 1px;
+                border-style: solid;
+                border-color: gray;
+            }
+
+            #products_header_search_image {
+                width: 24px;
+                margin: 4px;
+            }
+
+            #products_header_search_input {
+                border-radius: 0;
+                border-style: solid;
+                border-width: 1px;
+                font-size: 1.1rem;
+            }
+        }
+
+        #products_header_filter {
+            display: flex;
+            a {
+                border-style: solid;
+                border-color: gray;
+                border-width: 1px;
+                margin: 0 8px;
+                padding: 6px;
+                background-color: white;
+            }
+        }
+    }
+}
+
+#products_content {
+    margin: 12px;
+
+    #products_content_title {
+        font-size: 1.1rem;
+        margin: 8px;
+    }
+}
+
