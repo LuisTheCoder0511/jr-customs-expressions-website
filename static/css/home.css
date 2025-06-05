@@ -205,7 +205,7 @@ a:hover {
             text-align: center;
             font-size: 1.5rem;
             font-weight: bold;
-            margin: 10px 0 24px 0;
+            margin: 10px 0 16px 0;
         }
     }
 
@@ -269,3 +269,46 @@ a:hover {
     }
 }
 
+#footer {
+    padding: 20px 16px;
+    background-color: lightgray;
+
+    #footer_info {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 24px;
+
+        .footer_section {
+            font-size: 0.85rem;
+            display: flex;
+            padding-right: 24px;
+
+            .footer_column {
+                display: flex;
+                flex-direction: column;
+
+                div {
+                    font-size: 1rem;
+                    font-weight: bold;
+                    padding-bottom: 12px;
+                }
+            }
+        }
+
+        .footer_column_images {
+            display: flex;
+            flex-direction: row;
+            img {
+                margin-right: 16px;
+                width: 32px;
+            }
+        }
+    }
+
+    #footer_copyright {
+        font-size: 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        text-wrap: wrap;
+    }
+}
