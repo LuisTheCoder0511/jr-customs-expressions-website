@@ -3,6 +3,7 @@ import json
 
 from static.py.api.bucket.backblaze import backblaze
 from static.py.api.database import db_items
+from static.py.api.format import format
 
 
 def __select_all__(offset: int, limit: int, name: str = ""):
@@ -75,6 +76,7 @@ def api(request_form, request_files):
 
     elif sql_method == "insert":
         file = request_files.get("file")
+        price = format.currency(item_data["price"])
         json_data["timestamp"] = int(time.time())
         if db_items.__insert__(json_data["timestamp"],
                                item_data["name"],
@@ -82,7 +84,9 @@ def api(request_form, request_files):
                                item_data["quantity"],
                                item_data["has_image"],
                                item_data["data"]):
-            if not item_data["has_image"] or backblaze.__upload__(file, str(json_data["timestamp"])):
+            if (not item_data["has_image"]
+                    or backblaze.__upload__(file, str(json_data["timestamp"]))
+                        or format.currency_match(price)):
                 return True
             print("Something went wrong! Removing item!")
             db_items.__delete__(json_data["timestamp"])
@@ -96,7 +100,11 @@ def api(request_form, request_files):
                 return result
 
         if item_data["price"]:
-            result = db_items.__update_price__(item_data["timestamp"], item_data["price"])
+            price = format.currency(item_data["price"])
+            print(price)
+            if not format.currency_match(price):
+                return False
+            result = db_items.__update_price__(item_data["timestamp"], price)
             if not result:
                 return result
 
