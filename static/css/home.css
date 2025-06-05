@@ -42,7 +42,7 @@ a:hover {
         border-width: 2px;
         border-style: solid;
         border-radius: 50%;
-        margin: 8px;
+        margin: 16px 8px;
         width: 42px;
         height: 42px;
 
@@ -56,78 +56,216 @@ a:hover {
     background-color: rgb(255, 230, 230, 255);
     padding: 8px;
     z-index: 0;
-}
+    border-style: solid;
+    border-color: darkgray;
+    border-width: 2px 0 0 0;
 
-#home_logo {
-    display: flex;
-    width: 300px;
-    margin: auto;
+    #home_logo {
+        display: flex;
+        width: 250px;
+        margin: auto;
+    }
+
+    #welcome_about {
+        font-size: 1.1rem;
+        display: flex;
+        width: 72px;
+        height: 34px;
+        margin: auto;
+        border-radius: 20px;
+        border-style: solid;
+        border-width: 2px;
+        border-color: gray;
+        a {
+            width: 72px;
+            height: 34px;
+            text-align: center;
+            line-height: 200%;
+        }
+    }
 }
 
 #products {
     border-style: solid;
     border-color: darkgray;
     border-width: 2px 0;
-}
 
-#products_header {
-    margin: 12px;
+    #products_header {
+        padding: 12px;
 
-    #products_header_title {
-        font-size: 1.15rem;
-        font-weight: bold;
-        margin: 8px;
-    }
-
-    #products_header_input {
-        display: flex;
-        justify-content: space-between;
-
-        #products_header_search {
-            display: flex;
-            margin: 0 8px;
-
-            #products_header_search_button {
-                width: 32px;
-                height: 32px;
-                border-width: 1px;
-                border-style: solid;
-                border-color: gray;
-            }
-
-            #products_header_search_image {
-                width: 24px;
-                margin: 4px;
-            }
-
-            #products_header_search_input {
-                border-radius: 0;
-                border-style: solid;
-                border-width: 1px;
-                font-size: 1.1rem;
-            }
+        #products_header_title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 10px 0 24px 0;
         }
 
-        #products_header_filter {
+        #products_header_input {
             display: flex;
-            a {
-                border-style: solid;
-                border-color: gray;
-                border-width: 1px;
+            justify-content: space-between;
+
+            #products_header_search {
+                display: flex;
                 margin: 0 8px;
-                padding: 6px;
-                background-color: white;
+
+                #products_header_search_button {
+                    width: 32px;
+                    height: 32px;
+                    border-width: 1px;
+                    border-style: solid;
+                    border-color: gray;
+                }
+
+                #products_header_search_image {
+                    width: 24px;
+                    margin: 4px;
+                }
+
+                #products_header_search_input {
+                    border-radius: 0;
+                    border-style: solid;
+                    border-width: 1px;
+                    font-size: 1.05rem;
+                }
+            }
+
+            #products_header_filter {
+                display: flex;
+                font-size: 0.95rem;
+                a {
+                    border-style: solid;
+                    border-color: gray;
+                    border-width: 1px;
+                    margin: 0 8px;
+                    padding: 6px;
+                    background-color: white;
+                }
+            }
+        }
+    }
+
+    #products_content {
+        padding: 12px;
+
+        border-style: solid;
+        border-color: darkgray;
+        border-width: 1px 0 0 0;
+
+        #products_content_header {
+            display: flex;
+            font-size: 0.95rem;
+            justify-content: space-between;
+            margin: 0 8px 8px 8px;
+
+            #products_content_header_page {
+                display: flex;
+
+            }
+        }
+
+        #products_content_results {
+            display: flex;
+            font-size: 0.95rem;
+            margin: 8px;
+            overflow-x: auto;
+            .product_template {
+                margin: 8px 20px 8px 0;
+                width: 172px;
+                padding: 0 0 4px 0;
+                border-width: 2px;
+                border-style: solid;
+                border-color: gray;
+                a {
+                    img {
+                        width: 172px;
+                        border-width: 0 0 2px 0;
+                        border-style: solid;
+                        border-color: gray;
+                    }
+                    .product_template_name {
+                        height: 60px;
+                        padding: 0 4px;
+                    }
+
+                    div:not(.product_template_name) {
+                        font-size: 0.85rem;
+                        padding: 0 4px;
+                    }
+                }
             }
         }
     }
 }
 
-#products_content {
-    margin: 12px;
+#reviews {
+    #reviews_header {
+        padding: 12px;
 
-    #products_content_title {
-        font-size: 1.1rem;
-        margin: 8px;
+        #reviews_header_title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 10px 0 24px 0;
+        }
+    }
+
+    #reviews_stars {
+        text-align: center;
+        #reviews_stars_total {
+            font-size: 1.2rem;
+        }
+        img {
+            width: 32px;
+        }
+
+        #reviews_stars_stats {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 20px auto;
+
+            div {
+                display: flex;
+            }
+
+            img {
+                margin-right: 12px;
+            }
+
+            .rate_number, .rate_total {
+                margin: 8px;
+            }
+
+            .rate_total {
+                width: 32px;
+                justify-content: right;
+            }
+
+            .rate_rectangle {
+                width: 70%;
+                margin: auto 8px;
+                height: 12px;
+                background-color: gray;
+                border-radius: 32px;
+            }
+        }
+    }
+}
+
+#about {
+    border-style: solid;
+    border-color: darkgray;
+    border-width: 2px 0;
+
+    #about_header {
+        padding: 12px;
+
+        #about_header_title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 10px 0 24px 0;
+        }
     }
 }
 

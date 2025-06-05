@@ -28,6 +28,11 @@
     </div>
     <div id="welcome">
         <img id=home_logo src="/static/assets/images/jr_home_logo.png" alt="logo"/>
+        <div id="welcome_about">
+            <a>
+                About
+            </a>
+        </div>
     </div>
     <div id="products">
         <div id="products_header">
@@ -36,7 +41,8 @@
             </div>
             <div id="products_header_input">
                 <div id="products_header_search">
-                    <label for="products_header_search_input"></label><input id="products_header_search_input"/>
+                    <label for="products_header_search_input"></label>
+                    <input id="products_header_search_input" placeholder="Search Product"/>
                     <a id="products_header_search_button">
                        <img id="products_header_search_image" src="/static/assets/images/search.png" alt="search"/>
                     </a>
@@ -55,16 +61,107 @@
             </div>
         </div>
         <div id="products_content">
-            <div id="products_content_title">
-                Results of "Something"
+            <div id="products_content_header">
+                <div id="products_content_header_title">
+                    Results of "Test"
+                </div>
+                <div id="products_content_header_page">
+                    <div id="products_content_header_page_label">
+                        Page 1 of 5
+                    </div>
+                    <div id="products_content_header_page_nav">
+                        something
+                    </div>
+                </div>
+            </div>
+            <div id="products_content_results">
+                <div class="product_template">
+                    <a>
+                        <img src="/static/assets/images/Image_Test_Template.png" alt="test"/>
+                        <div class="product_template_name">Name of the item</div>
+                        <div>$6.99</div>
+                        <div>In stock</div>
+                    </a>
+                </div>
+                <div class="product_template">
+                    <a>
+                        <img src="/static/assets/images/Image_Test_Template.png" alt="test"/>
+                        <div class="product_template_name">Name of the item, can be super, super long too.</div>
+                        <div>$6.99</div>
+                        <div>In stock</div>
+                    </a>
+                </div>
+                <div class="product_template">
+                    <a>
+                        <img src="/static/assets/images/Image_Test_Template.png" alt="test"/>
+                        <div class="product_template_name">Name of the item, can be super, super long too.</div>
+                        <div>$6.99</div>
+                        <div>In stock</div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
     <div id="reviews">
-
+        <div id="reviews_header">
+            <div id="reviews_header_title">
+                Reviews
+            </div>
+        </div>
+        <div id="reviews_stars">
+            <div id="reviews_stars_total">
+                5 stars
+            </div>
+            <div id="reviews_stars_rating">
+                <img src="/static/assets/images/review_star_full.png" alt="star_full"/>
+                <img src="/static/assets/images/review_star_full.png" alt="star_full"/>
+                <img src="/static/assets/images/review_star_full.png" alt="star_full"/>
+                <img src="/static/assets/images/review_star_full.png" alt="star_full"/>
+                <img src="/static/assets/images/review_star_full.png" alt="star_full"/>
+            </div>
+            <div id="reviews_stars_description">
+                69 Reviews
+            </div>
+            <div id="reviews_stars_stats">
+                <div id="reviews_stars_stats_5">
+                    <div class="rate_number">5</div>
+                    <img src="/static/assets/images/review_star_full.png" alt="star full"/>
+                    <div class="rate_rectangle"></div>
+                    <div class="rate_total">30</div>
+                </div>
+                <div id="reviews_stars_stats_4">
+                    <div class="rate_number">4</div>
+                    <img src="/static/assets/images/review_star_full.png" alt="star full"/>
+                    <div class="rate_rectangle"></div>
+                    <div class="rate_total">0</div>
+                </div>
+                <div id="reviews_stars_stats_3">
+                    <div class="rate_number">3</div>
+                    <img src="/static/assets/images/review_star_full.png" alt="star full"/>
+                    <div class="rate_rectangle"></div>
+                    <div class="rate_total">0</div>
+                </div>
+                <div id="reviews_stars_stats_2">
+                    <div class="rate_number">2</div>
+                    <img src="/static/assets/images/review_star_full.png" alt="star full"/>
+                    <div class="rate_rectangle"></div>
+                    <div class="rate_total">0</div>
+                </div>
+                <div id="reviews_stars_stats_1">
+                    <div class="rate_number">1</div>
+                    <img src="/static/assets/images/review_star_full.png" alt="star full"/>
+                    <div class="rate_rectangle"></div>
+                    <div class="rate_total">0</div>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="about">
-
+        <div id="about_header">
+            <div id="about_header_title">
+                About
+            </div>
+        </div>
     </div>
     <div id="footer">
 
