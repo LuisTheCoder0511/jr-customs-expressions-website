@@ -6,37 +6,23 @@
     <title>JR Customs Expressions</title>
 </head>
 <body>
-    <div id="header">
-        <a id="logo" href="/">
-            <img src="/static/assets/images/home_logo.png" alt="logo"/>
-        </a>
-        <div id="buttons">
-            <a>
-                <img src="/static/assets/images/button_products.png" alt="Products">
-            </a>
-            <a>
-                <img src="/static/assets/images/button_reviews.png" alt="Reviews">
-            </a>
-            <a>
-                <img src="/static/assets/images/button_about.png" alt="About">
-            </a>
-            <a>
-                <img src="/static/assets/images/button_q&a.png" alt="Q&A">
-            </a>
-        </div>
-        <a id="account">
-            <img src="/static/assets/images/account.webp" alt="account"/>
-        </a>
-        <div id="popup"></div>
-    </div>
+    <div id="header"></div>
     <div id="welcome">
         <img id=home_logo src="/static/assets/images/jr_home_logo.png" alt="logo"/>
-        <div id="welcome_about">
-            <a>
-                About
-            </a>
+        <div id="welcome_buttons">
+            <div id="welcome_about">
+                <a onclick="scrollInto('about')">
+                    About
+                </a>
+            </div>
+            <div id="welcome_reviews">
+                <a onclick="scrollInto('reviews')">
+                    Reviews
+                </a>
+            </div>
         </div>
     </div>
+
     <div id="products">
         <div id="products_header">
             <div id="products_header_title">
@@ -79,7 +65,7 @@
             </div>
             <div id="products_content_results">
                 <div class="product_template">
-                    <a>
+                    <a href="/page/item">
                         <img src="/static/assets/images/Image_Test_Template.png" alt="test"/>
                         <div class="product_template_name">Name of the item</div>
                         <div>$6.99</div>
@@ -105,6 +91,82 @@
             </div>
         </div>
     </div>
+
+    <div id="tumblrs" class="promotion">
+        <div id="tumblrs_left_div" class="promotion_labels">
+            <div id="tumblrs_title" class="promotion_title">
+                Check out our Tumblrs!
+            </div>
+            <div id="tumblrs_description" class="promotion_description">
+                Including whatever to make this description long enough for testing.
+            </div>
+            <div id="tumblrs_button" class="promotion_button">
+                <a>
+                    Shop for tumblrs
+                </a>
+            </div>
+        </div>
+        <div id="tumblrs_right_div" class="promotion_image">
+            <img src="/static/assets/images/tumblrs.jpg" alt="tumblr"/>
+        </div>
+    </div>
+
+    <div id="onesies" class="promotion">
+        <div id="onesies_left_div" class="promotion_image">
+            <img src="/static/assets/images/onesies.webp" alt="onesies"/>
+        </div>
+        <div id="onesies_right_div" class="promotion_labels">
+            <div id="onesies_title" class="promotion_title">
+                Check out our Onesies!
+            </div>
+            <div id="onesies_description" class="promotion_description">
+                Including whatever to make this description long enough for testing.
+            </div>
+            <div id="onesies_button" class="promotion_button">
+                <a>
+                    Shop for onesies
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="plushies" class="promotion">
+        <div id="plushies_left_div" class="promotion_labels">
+            <div id="plushies_title" class="promotion_title">
+                Check out our Plushies!
+            </div>
+            <div id="plushies_description" class="promotion_description">
+                Including whatever to make this description long enough for testing.
+            </div>
+            <div id="plushies_button" class="promotion_button">
+                <a>
+                    Shop for plushies
+                </a>
+            </div>
+        </div>
+        <div id="plushies_right_div" class="promotion_image">
+            <img src="/static/assets/images/plushies.webp" alt="plushies"/>
+        </div>
+    </div>
+
+    <div id="about">
+        <div id="about_header">
+            <div id="about_header_title">
+                About
+            </div>
+        </div>
+        <div id="about_content">
+            <div id="about_picture">
+                <img src="/static/assets/images/jr_second_logo.png" alt="me"/>
+            </div>
+            <div id="about_text">
+                <p>
+                    This is a test to see how good the width is for this about section! Welcome to JRs!
+                </p>
+            </div>
+        </div>
+    </div>
+
     <div id="reviews">
         <div id="reviews_header">
             <div id="reviews_header_title">
@@ -129,104 +191,61 @@
                 <div id="reviews_stars_stats_5">
                     <div class="rate_number">5</div>
                     <img src="/static/assets/images/review_star_full.png" alt="star full"/>
-                    <div class="rate_rectangle"></div>
+                    <div class="rate_rectangles">
+                        <div class="rate_background"></div>
+                        <div class="rate_foreground"></div>
+                    </div>
                     <div class="rate_total">30</div>
                 </div>
                 <div id="reviews_stars_stats_4">
                     <div class="rate_number">4</div>
                     <img src="/static/assets/images/review_star_full.png" alt="star full"/>
-                    <div class="rate_rectangle"></div>
+                    <div class="rate_rectangles">
+                        <div class="rate_background"></div>
+                        <div class="rate_foreground"></div>
+                    </div>
                     <div class="rate_total">0</div>
                 </div>
                 <div id="reviews_stars_stats_3">
                     <div class="rate_number">3</div>
                     <img src="/static/assets/images/review_star_full.png" alt="star full"/>
-                    <div class="rate_rectangle"></div>
+                    <div class="rate_rectangles">
+                        <div class="rate_background"></div>
+                        <div class="rate_foreground"></div>
+                    </div>
                     <div class="rate_total">0</div>
                 </div>
                 <div id="reviews_stars_stats_2">
                     <div class="rate_number">2</div>
                     <img src="/static/assets/images/review_star_full.png" alt="star full"/>
-                    <div class="rate_rectangle"></div>
+                    <div class="rate_rectangles">
+                        <div class="rate_background"></div>
+                        <div class="rate_foreground"></div>
+                    </div>
                     <div class="rate_total">0</div>
                 </div>
                 <div id="reviews_stars_stats_1">
                     <div class="rate_number">1</div>
                     <img src="/static/assets/images/review_star_full.png" alt="star full"/>
-                    <div class="rate_rectangle"></div>
+                    <div class="rate_rectangles">
+                        <div class="rate_background"></div>
+                        <div class="rate_foreground"></div>
+                    </div>
+                    <div class="current_rate_rectangle"></div>
                     <div class="rate_total">0</div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="about">
-        <div id="about_header">
-            <div id="about_header_title">
-                About
-            </div>
-        </div>
-    </div>
-    <div id="footer">
-        <div id="footer_info">
-            <div id="footer_help" class="footer_section">
-                <div id="footer_column_help" class="footer_column">
-                    <div class="footer_column_title">
-                        Help!
-                    </div>
-                    <a class="footer_column_link">
-                        Contact Us
-                    </a>
-                    <a class="footer_column_link">
-                        Accessibility
-                    </a>
-                </div>
-            </div>
-            <div id="footer_terms" class="footer_section">
-                <div id="footer_column_terms" class="footer_column">
-                    <div class="footer_column_title">
-                        Legal Use
-                    </div>
-                    <a class="footer_column_link">
-                        Terms of Use
-                    </a>
-                    <a class="footer_column_link">
-                        Privacy Policy
-                    </a>
-                    <a class="footer_column_link">
-                        Credits
-                    </a>
-                    <a class="footer_column_link">
-                        Do NOT sell our website!
-                    </a>
-                </div>
-            </div>
-            <div id="footer_contacts" class="footer_section">
-                <div id="footer_column_contacts" class="footer_column">
-                    <div class="footer_column_title">
-                        Contact us
-                    </div>
-                    <div class="footer_column_images">
-                        <div class="footer_column_images_insta">
-                            <img src="/static/assets/images/contacts/insta.png" alt="insta">
-                        </div>
-                        <div class="footer_column_images_facebook">
-                            <img src="/static/assets/images/contacts/facebook.png" alt="facebook">
-                        </div>
-                        <div class="footer_column_images_youtube">
-                            <img src="/static/assets/images/contacts/youtube.png" alt="youtube">
-                        </div>
-                        <div class="footer_column_images_pinterest">
-                            <img src="/static/assets/images/contacts/pinterest.png" alt="pinterest">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="footer_copyright">
-            2025 JR Customs Expressions. All Rights Reserved.
-        </div>
-    </div>
+    <div id="footer"></div>
 </body>
+
+<script src="/static/js/base.js"></script>
 <script src="/static/js/home.js"></script>
+
+<link rel="stylesheet" href="/static/css/base/base.css"/>
+<link rel="stylesheet" href="/static/css/base/header.css"/>
+<link rel="stylesheet" href="/static/css/base/footer.css"/>
 <link rel="stylesheet" href="/static/css/home.css"/>
+
 </html>

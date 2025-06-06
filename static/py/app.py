@@ -7,7 +7,7 @@ from env_files import env_load
 
 from static.py.api.database import oracle
 
-from static.py.blueprints.home import blueprint as home_blueprint
+from static.py.blueprints.routes import blueprint
 
 if __name__ == "__main__":
     environment = 0
@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
     print("Initializing...")
     app = Flask(__name__, root_path=os.getcwd())
-    app.register_blueprint(home_blueprint)
+    app.register_blueprint(blueprint)
 
     if local:
         env_load.load()

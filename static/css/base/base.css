@@ -1,0 +1,15 @@
+@font-face {
+    font-family: SalmaPro;
+    src: url("/static/assets/fonts/SalmaproMedium-0Wooo.otf") format("opentype");
+}
+
+body {
+    background-image: url("/static/assets/images/bg.jpg");
+    font-family: SalmaPro, serif;
+    margin: 0;
+    user-select: none;
+}
+
+a:hover {
+    cursor: pointer;
+}

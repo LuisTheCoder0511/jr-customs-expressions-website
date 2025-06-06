@@ -1,0 +1,197 @@
+#item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    border-style: solid;
+    border-color: darkgray;
+    border-width: 2px 0;
+    padding: 12px;
+
+    #item_images {
+        display: flex;
+        #item_extra_images {
+            display: flex;
+            flex-direction: column;
+            img {
+                width: 60px;
+                margin: 8px;
+            }
+        }
+
+        #item_current_image {
+            margin: 8px;
+            img {
+                max-width: 365px;
+            }
+        }
+    }
+
+    #item_metadata {
+        .item_metadata_section {
+            margin: 6px;
+            padding-bottom: 8px;
+            width: 425px;
+            border-style: solid;
+            border-width: 0;
+            border-bottom-width: 2px;
+            border-color: lightgray;
+
+            #item_metadata_top_column {
+                display: flex;
+                justify-content: space-between;
+                #item_metadata_name {
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                }
+                padding-bottom: 1px;
+            }
+
+            #item_metadata_author {
+                font-size: 1rem;
+                padding-bottom: 3px;
+            }
+
+            #item_metadata_price {
+                font-size: 1.25rem;
+                color: hotpink;
+                padding-bottom: 2px;
+            }
+
+            #item_metadata_quantity {
+                font-size: 1rem;
+                padding-bottom: 8px;
+            }
+
+            #item_metadata_reviews {
+                display: flex;
+                font-size: 0.95rem;
+                #item_metadata_reviews_stars {
+                    margin-right: 12px;
+                    img {
+                        width: 20px;
+                    }
+                }
+            }
+
+            #item_metadata_checkout {
+                display: flex;
+                padding: 8px 0;
+                #item_metadata_checkout_quantity {
+                    display: flex;
+                    background-color: lightgray;
+                    div {
+                        border-style: solid;
+                        border-color: gray;
+                    }
+
+                    #item_metadata_checkout_quantity_subtract {
+                        border-width: 2px 0 2px 2px;
+                        padding: 10px 20px;
+                    }
+
+                    #item_metadata_checkout_quantity_amount {
+                        border-width: 2px 0 2px 2px;
+                        padding: 10px 30px;
+                    }
+
+                    #item_metadata_checkout_quantity_add {
+                        border-width: 2px 0 2px 2px;
+                        padding: 10px 20px;
+                    }
+                }
+                #item_metadata_checkout_button {
+                    background-color: lightpink;
+                    border-width: 2px;
+                    border-style: solid;
+                    border-color: gray;
+                    padding: 10px 40px;
+                }
+            }
+
+            #item_metadata_description {
+                padding: 8px 0;
+                #item_metadata_description_title {
+                    font-size: 1.25rem;
+                    color: hotpink;
+                }
+                #item_metadata_description_content {
+                    font-size: 0.95rem;
+                    padding: 8px 0;
+                }
+            }
+        }
+    }
+}
+
+#reviews {
+    #reviews_header {
+        padding: 12px;
+
+        #reviews_header_title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 10px 0 16px 0;
+        }
+    }
+
+    #reviews_stars {
+        text-align: center;
+        #reviews_stars_total {
+            font-size: 1.2rem;
+        }
+        img {
+            width: 32px;
+        }
+
+        #reviews_stars_stats {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 20px auto;
+
+            div {
+                display: flex;
+
+                img {
+                    margin-right: 12px;
+                }
+
+                .rate_number, .rate_total {
+                    margin: 8px;
+                }
+
+                .rate_total {
+                    width: 32px;
+                    justify-content: right;
+                }
+
+                .rate_rectangles {
+                    display: flex;
+                    flex-direction: column;
+                    width: 70%;
+
+                    .rate_background, .rate_foreground {
+                        margin: auto 8px;
+                        height: 12px;
+                        border-radius: 32px;
+                    }
+
+                    .rate_background {
+                        position: relative;
+                        top: 11px;
+                        background-color: gray;
+                    }
+
+                    .rate_foreground {
+                        width: 3%;
+                        position: relative;
+                        bottom: 6px;
+                        background-color: red;
+                    }
+                }
+            }
+        }
+    }
+}
