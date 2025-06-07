@@ -2,7 +2,7 @@ import time
 import json
 
 from static.py.api.bucket.backblaze import backblaze
-from static.py.api.database import db_items
+from static.py.api.database import db_products
 from static.py.api.format import format
 
 

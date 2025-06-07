@@ -13,19 +13,21 @@ if __name__ == "__main__":
     environment = 0
     local = False
     cloud = False
+    public = False
 
     while True:
         try:
-            environment = int(input("1: local, 2: cloud... "))
-            if environment == 1 or environment == 2:
+            environment = int(input("1: local, 2: cloud, 3: public... "))
+            if environment == 1 or environment == 2 or environment == 3:
                 break
         except ValueError:
             print("Invalid input. Please try again.")
         else:
-            print("Environment value must be either 1 or 2.")
+            print("Environment value must be either 1, 2, or 3.")
 
-    local = environment == 1
+    local = environment == 1 or environment == 3
     cloud = environment == 2
+    public = environment == 3
 
     print("Initializing...")
     app = Flask(__name__, root_path=os.getcwd())
@@ -37,6 +39,10 @@ if __name__ == "__main__":
     backblaze.__authenticate__()
     oracle.__run__(local)
     PORT = 8001
-    host = '0.0.0.0'
+    if public:
+        host = '127.0.0.1'
+    else:
+        host = '0.0.0.0'
+
     app.run(host=host, port=PORT, debug=local, use_reloader=False)
     oracle.__stop__()

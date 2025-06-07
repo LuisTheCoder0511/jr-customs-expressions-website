@@ -3,83 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JR Customs Expressions</title>
+    <title>JR Customs Expressions - Product</title>
 </head>
 <body>
     <div id="header"></div>
 
-    <div id="item">
-        <div id="item_images">
-            <div id="item_extra_images">
+    <div id="product">
+        <div id="product_images">
+            <div id="product_extra_images">
                 <img src="/static/assets/images/Image_Test_Template.png" alt="Test"/>
                 <img src="/static/assets/images/Image_Test_Template.png" alt="Test"/>
                 <img src="/static/assets/images/Image_Test_Template.png" alt="Test"/>
                 <img src="/static/assets/images/Image_Test_Template.png" alt="Test"/>
                 <img src="/static/assets/images/Image_Test_Template.png" alt="Test"/>
             </div>
-            <div id="item_current_image">
+            <div id="product_current_image">
                 <img src="/static/assets/images/Image_Test_Template.png" alt="Test"/>
             </div>
         </div>
-        <div id="item_metadata">
-            <div class="item_metadata_section">
-                <div id="item_metadata_top_column">
-                    <div id="item_metadata_name">
-                        Name of the item.
+        <div id="product_metadata">
+            <div class="product_metadata_section">
+                <div id="product_metadata_top_column">
+                    <div id="product_metadata_name">
+                        Name of the product.
                     </div>
-                    <div id="item_metadata_like">
-                        Heart
+                    <div id="product_metadata_like">
+                        <a id="product_metadata_like_button">
+                            <img src="/static/assets/images/like.png" alt="like"/>
+                        </a>
                     </div>
                 </div>
-                <div id="item_metadata_author">
+                <div id="product_metadata_author">
                     Jessy
                 </div>
-                <div id="item_metadata_price">
+                <div id="product_metadata_price">
                     $9.99
                 </div>
-                <div id="item_metadata_quantity">
-                    20 items | In stock
+                <div id="product_metadata_quantity">
+                    20 products | In stock
                 </div>
-                <div id="item_metadata_reviews">
-                    <div id="item_metadata_reviews_stars">
+                <div id="product_metadata_reviews">
+                    <div id="product_metadata_reviews_stars">
                         <img src="/static/assets/images/review_star_full.png" alt="star_full"/>
                         <img src="/static/assets/images/review_star_full.png" alt="star_full"/>
                         <img src="/static/assets/images/review_star_full.png" alt="star_full"/>
                         <img src="/static/assets/images/review_star_full.png" alt="star_full"/>
                         <img src="/static/assets/images/review_star_full.png" alt="star_full"/>
                     </div>
-                    <div id="item_metadata_reviews_info">
+                    <div id="product_metadata_reviews_info">
                         5 stars | 69 reviews
                     </div>
                 </div>
             </div>
-            <div class="item_metadata_section">
-                <div id="item_metadata_checkout">
-                    <div id="item_metadata_checkout_quantity">
-                        <div id="item_metadata_checkout_quantity_subtract">
+<!--            <div class="product_metadata_section">-->
+<!--                <div id="product_metadata_color">-->
+<!--                    <div id="product_metadata_color_title">-->
+<!--                        Color: [COLOR]-->
+<!--                    </div>-->
+<!--                    <div id="product_metadata_color_options">-->
+<!--                        <div class="select">-->
+<!--                            <a>-->
+<!--                                <img src="/static/assets/images/checkmark.png" alt="check"/>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+            <div class="product_metadata_section">
+                <div id="product_metadata_checkout">
+                    <div id="product_metadata_checkout_quantity">
+                        <a id="product_metadata_checkout_quantity_subtract">
                             -
-                        </div>
-                        <div id="item_metadata_checkout_quantity_amount">
+                        </a>
+                        <div id="product_metadata_checkout_quantity_amount">
                             1
                         </div>
-                        <div id="item_metadata_checkout_quantity_add">
+                        <a id="product_metadata_checkout_quantity_add">
                             +
-                        </div>
+                        </a>
                     </div>
-                    <div id="item_metadata_checkout_button">
+                    <a id="product_metadata_checkout_button">
                         Add to cart
-                    </div>
+                    </a>
                 </div>
-                <div id="item_metadata_description">
-                    <div id="item_metadata_description_title">
+                <div id="product_metadata_description">
+                    <div id="product_metadata_description_title">
                         Description
                     </div>
-                    <div id="item_metadata_description_content">
-                        This is a test to input any item description you want for this item!
+                    <div id="product_metadata_description_content">
+                        This is a test to input any product description you want for this product!
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="product_suggestions">
+
     </div>
 
     <div id="reviews">
@@ -156,11 +176,11 @@
 </body>
 
 <script src="/static/js/base.js"></script>
-<script src="/static/js/item.js"></script>
+<script src="/static/js/product.js"></script>
 
 <link rel="stylesheet" href="/static/css/base/base.css"/>
 <link rel="stylesheet" href="/static/css/base/header.css"/>
 <link rel="stylesheet" href="/static/css/base/footer.css"/>
-<link rel="stylesheet" href="/static/css/item.css"/>
+<link rel="stylesheet" href="/static/css/product.css"/>
 
 </html>

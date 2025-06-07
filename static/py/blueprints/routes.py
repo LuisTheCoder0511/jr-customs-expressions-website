@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint, request, jsonify, send_file
 
-from static.py.api import webpage, items
+from static.py.api import webpage, products
 
 blueprint = Blueprint("routes", __name__)
 

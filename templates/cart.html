@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JR Customs Expressions - Cart</title>
+</head>
+<body>
+    <div id="header"></div>
+
+    <div id="cart">
+        <div id="title">
+            My Cart
+        </div>
+        <div id="table">
+            <div id="identifiers">
+                <div id="product_identifier" class="identifier_1">
+                    Product
+                </div>
+                <div id="quantity_identifier" class="identifier_2">
+                    Quantity
+                </div>
+                <div id="price_identifier" class="identifier_3">
+                    Price
+                </div>
+            </div>
+            <div class="product">
+                <div class="identifier_1">
+                    <div class="product_information">
+                        <img src="/static/assets/images/Image_Test_Template.png" alt="product">
+                        <div class="product_text">
+                            <div class="product_name">
+                                Name of the product
+                            </div>
+                            <div class="product_option">
+                                Color: Blue
+                            </div>
+                            <div class="product_edit">
+                                <a class="edit">
+                                    Edit
+                                </a>
+                                <a class="remove">
+                                    Remove
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="identifier_2">
+                    <div class="product_quantity">
+                        <div class="product_quantity_subtract">
+                            <a>
+                                -
+                            </a>
+                        </div>
+                        <div class="product_quantity_amount">
+                            <div>
+                                1
+                            </div>
+                        </div>
+                        <div class="product_quantity_add">
+                            <a>
+                                +
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="identifier_3">
+                    <div class="product_price">
+                        $666.99
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="total_table">
+            <div id="subtotal">
+                <div class="total_name">Subtotal:</div>
+                <div class="total_cost">$6.99</div>
+            </div>
+            <div id="sales_tax">
+                <div class="total_name">Sales Tax:</div>
+                <div class="total_cost">$0.49</div>
+            </div>
+            <div id="grand_total">
+                <div class="total_name">Final total:</div>
+                <div class="total_final">$7.48</div>
+            </div>
+        </div>
+        <div id="checkout">
+            <div id="checkout_button">
+                <a>
+                    Checkout!
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+</body>
+
+<script src="/static/js/base.js"></script>
+<script src="/static/js/cart.js"></script>
+
+<link rel="stylesheet" href="/static/css/base/base.css"/>
+<link rel="stylesheet" href="/static/css/base/header.css"/>
+<link rel="stylesheet" href="/static/css/base/footer.css"/>
+<link rel="stylesheet" href="/static/css/cart.css"/>
+
+</html>

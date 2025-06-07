@@ -1,0 +1,185 @@
+#cart {
+    max-width: 800px;
+    width: auto;
+    margin: auto;
+
+    padding: 10px;
+    #title {
+        padding: 12px;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    #table {
+        padding: 10px;
+
+        #identifiers {
+            display: flex;
+            padding: 12px 4px;
+            border-width: 0 0 2px 0;
+            border-style: solid;
+            border-color: darkgray;
+        }
+
+        .identifier_1 {
+            display: flex;
+            width: 575px;
+            min-width: 230px;
+        }
+
+        .identifier_2 {
+            display: flex;
+            margin: auto;
+            justify-content: center;
+            width: 110px;
+            min-width: 110px;
+        }
+
+        .identifier_3 {
+            display: flex;
+            justify-content: right;
+            width: 75px;
+            min-width: 75px;
+        }
+
+        .product {
+            display: flex;
+            height: 125px;
+            padding: 12px 4px;
+            border-width: 0 0 2px 0;
+            border-style: solid;
+            border-color: darkgray;
+
+            .identifier_1 {
+                height: 125px;
+                margin: auto;
+            }
+
+            .product_information {
+                display: flex;
+                img {
+                    width: 125px;
+                    margin-right: 8px;
+                }
+
+                .product_text {
+                    margin: auto 0;
+
+                    div {
+                        margin: 4px;
+                    }
+
+                    .product_name {
+                        font-size: 1.1rem;
+                    }
+
+                    .product_option {
+                        font-size: 0.9rem;
+                        color: dimgray;
+                    }
+
+                    .product_edit {
+                        display: flex;
+                        font-size: 0.85rem;
+
+                        .edit {
+                            margin-right: 4px;
+                            color: deeppink;
+                            text-decoration: underline;
+                        }
+
+                        .remove {
+                            margin-left: 4px;
+                            color: rgb(224, 0, 0);
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+
+            .product_quantity {
+                display: flex;
+                justify-content: center;
+                height: 25px;
+
+                .product_quantity_subtract, .product_quantity_add {
+                    width: 25px;
+                    display: flex;
+                    text-align: center;
+                    a {
+                        width: 25px;
+                        height: 25px;
+                        line-height: 137%;
+                    }
+                    border-width: 2px;
+                    border-style: solid;
+                    border-color: darkgray;
+                }
+
+                .product_quantity_amount {
+                    width: 50px;
+                    text-align: center;
+                    display: flex;
+                    div {
+                        width: 50px;
+                        line-height: 137%;
+                    }
+                    border-width: 2px 0;
+                    border-style: solid;
+                    border-color: darkgray;
+                }
+            }
+
+            .product_price {
+                margin: auto 0;
+            }
+        }
+    }
+
+    #total_table {
+        margin-left: auto;
+        padding: 0 12px;
+        width: 250px;
+
+        #subtotal, #sales_tax, #grand_total{
+            padding: 12px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #subtotal, #sales_tax {
+            border-color: darkgray;
+            border-width: 0 0 2px 0;
+            border-style: solid;
+        }
+
+        #grand_total > .total_name {
+            margin: auto 0;
+        }
+
+        .total_final {
+            font-size: 1.35rem;
+        }
+    }
+
+    #checkout {
+        padding: 12px;
+        div {
+            display: flex;
+            background-color: pink;
+            width: 150px;
+            height: 50px;
+            border-style: solid;
+            border-width: 2px;
+            border-color: gray;
+            margin-left: auto;
+            text-align: center;
+            line-height: 315%;
+            a {
+                width: 150px;
+                height: 50px;
+            }
+        }
+    }
+}

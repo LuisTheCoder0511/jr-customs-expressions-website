@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify, redirect
-from static.py.api import items, webpage
+from static.py.api import products, webpage
 
 import json
 

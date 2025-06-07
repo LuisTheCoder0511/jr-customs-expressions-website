@@ -4,7 +4,7 @@
 
     border-style: solid;
     border-color: darkgray;
-    border-width: 2px 0;
+    border-width: 2px 0 0 0;
 
     #footer_info {
         display: flex;
