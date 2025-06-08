@@ -1,15 +1,14 @@
 from static.py.api.database.oracle import database
 
-TABLE_NAME = "Items"
+TABLE_NAME = "Products"
 
 def __create_table__():
     statement = (f"CREATE TABLE {TABLE_NAME} ("
-                 f"Timestamp INTEGER PRIMARY KEY,"
-                 f"Name VARCHAR(255),"
-                 f"Price VARCHAR(255),"
+                 f"ProductID GENERATED ALWAYS AS IDENTITY INTEGER PRIMARY KEY,"
+                 f"Name VARCHAR(1000),"
+                 f"Price VARCHAR(7),"
                  f"Quantity INTEGER,"
-                 f"HasImage INTEGER CHECK (HasImage IN (0, 1)),"
-                 f"Data CLOB CHECK (Data is JSON))")
+                 f"ProductData CLOB CHECK (ProductData is JSON))")
     if database.__execute__(statement):
         print("Table created successfully")
     else:
@@ -25,7 +24,7 @@ def __drop_table__():
 
 def __select_all__(offset: int, limit: int):
     database.__row_factory__()
-    statement = (f"SELECT * FROM {TABLE_NAME} ORDER BY Timestamp DESC\n"
+    statement = (f"SELECT * FROM {TABLE_NAME} ORDER BY ProductID DESC\n"
                  f"OFFSET {offset} ROWS FETCH NEXT {limit} ROWS ONLY")
     if database.__execute__(statement):
         print("Selected all rows successfully")
@@ -36,7 +35,7 @@ def __select_all__(offset: int, limit: int):
 
 def __select_all_name__(offset: int, limit: int, name: str):
     database.__row_factory__()
-    statement = (f"SELECT * FROM {TABLE_NAME} WHERE LOWER(Name) LIKE LOWER('{name}%') ORDER BY Timestamp DESC\n"
+    statement = (f"SELECT * FROM {TABLE_NAME} WHERE LOWER(Name) LIKE LOWER('{name}%') ORDER BY ProductID DESC\n"
                  f"OFFSET {offset} ROWS FETCH NEXT {limit} ROWS ONLY\n")
     if database.__execute__(statement):
         print("Selected all name rows successfully")
@@ -45,8 +44,8 @@ def __select_all_name__(offset: int, limit: int, name: str):
     return None
 
 
-def __select_one__(timestamp: int):
-    statement = f"SELECT * FROM {TABLE_NAME} WHERE Timestamp = {timestamp}"
+def __select_one__(product_id: int):
+    statement = f"SELECT * FROM {TABLE_NAME} WHERE ProductID = {product_id}"
     if database.__execute__(statement):
         print("Selected row successfully")
         return database.__fetch_one__()
@@ -54,9 +53,9 @@ def __select_one__(timestamp: int):
     return None
 
 
-def __insert__(timestamp: int, name: str, price: str, quantity: int, has_image: int, data):
-    statement = f"INSERT INTO {TABLE_NAME} (Timestamp, Name, Price, Quantity, HasImage, Data) VALUES (:1, :2, :3, :4, :5, :6)"
-    result = database.__execute__(statement, (timestamp, name, price, quantity, has_image, data))
+def __insert__(name: str, price: str, quantity: int, product_data):
+    statement = f"INSERT INTO {TABLE_NAME} (Name, Price, Quantity, ProductData) VALUES (:1, :2, :3, :4)"
+    result = database.__execute__(statement, (name, price, quantity, product_data))
     if result:
         print("Inserted row successfully")
     else:
@@ -64,8 +63,8 @@ def __insert__(timestamp: int, name: str, price: str, quantity: int, has_image: 
     return result
 
 
-def _update(timestamp: int, set_query: str):
-    statement = f"UPDATE {TABLE_NAME} SET {set_query} WHERE Timestamp = {timestamp}"
+def _update(product_id: int, set_query: str):
+    statement = f"UPDATE {TABLE_NAME} SET {set_query} WHERE ProductID = {product_id}"
     result = database.__execute__(statement)
     if result:
         print("Updated row successfully")
@@ -74,28 +73,23 @@ def _update(timestamp: int, set_query: str):
     return result
 
 
-def __update_name__(timestamp: int, name: str):
-    return _update(timestamp, f"NAME = '{name}'")
+def __update_name__(product_id: int, name: str):
+    return _update(product_id, f"NAME = '{name}'")
 
 
-def __update_price__(timestamp: int, price: str):
-    return _update(timestamp, f"PRICE = '{price}'")
+def __update_price__(product_id: int, price: str):
+    return _update(product_id, f"PRICE = '{price}'")
 
 
-def __update_quantity__(timestamp: int, quantity: int):
-    return _update(timestamp, f"Quantity = '{quantity}'")
+def __update_quantity__(product_id: int, quantity: int):
+    return _update(product_id, f"Quantity = '{quantity}'")
+
+def __update_data__(product_id: int, product_data):
+    return _update(product_id, f"ProductData = '{product_data}'")
 
 
-def __update_has_image__(timestamp: int, has_image: int):
-    return _update(timestamp, f"HasImage = '{has_image}'")
-
-
-def __update_data__(timestamp: int, data):
-    return _update(timestamp, f"Data = '{data}'")
-
-
-def __delete__(timestamp: int):
-    result = database.__execute__(f"DELETE FROM {TABLE_NAME} WHERE Timestamp = {timestamp}")
+def __delete__(product_id: int):
+    result = database.__execute__(f"DELETE FROM {TABLE_NAME} WHERE ProductID = {product_id}")
     if result:
         print("Item deleted successfully")
     else:

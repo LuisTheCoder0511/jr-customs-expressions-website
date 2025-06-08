@@ -19,8 +19,8 @@ def template(name):
 @blueprint.route("/api/<name>", methods=["GET", "POST"])
 def api(name):
     data = {}
-    if name == "items":
-        data = items.api(request.form, None)
+    if name == "products":
+        data = products.api(request.form, request.files)
     elif name == "webpage":
         data = webpage.api(request.form)
 

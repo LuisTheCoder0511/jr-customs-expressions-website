@@ -8,9 +8,9 @@ from static.py.api.format import format
 
 def __select_all__(offset: int, limit: int, name: str = ""):
     if not name:
-        select_all = db_items.__select_all__(offset, limit)
+        select_all = db_products.__select_all__(offset, limit)
     else:
-        select_all = db_items.__select_all_name__(offset, limit, name)
+        select_all = db_products.__select_all_name__(offset, limit, name)
 
     print("Parsing...")
     benchmark_time = time.time()
@@ -28,8 +28,8 @@ def __select_all__(offset: int, limit: int, name: str = ""):
     return select_all
 
 
-def __select_one__(timestamp):
-    old_data = db_items.__select_one__(timestamp)
+def __select_one__(product_id):
+    old_data = db_products.__select_one__(product_id)
 
     benchmark_time = time.time()
 
@@ -48,7 +48,7 @@ def parse_data(old_data):
         parsed_data = old_data[5]
 
     new_data = {
-        "Timestamp": old_data[0],
+        "ProductID": old_data[0],
         "Name": old_data[1],
         "Price": old_data[2],
         "Quantity": old_data[3],
@@ -62,67 +62,65 @@ def parse_data(old_data):
 
 
 def api(request_form, request_files):
-    db_items.__create_table__()
+    db_products.__create_table__()
 
     data = request_form.get("data")
     json_data = json.loads(data)
     sql_method = json_data["sql_method"]
-    item_data = json_data["data"]
+    product = json_data["data"]
+
     if sql_method == "select_all":
-        return __select_all__(json_data["offset"], json_data["limit"], item_data["name"])
+        return __select_all__(json_data["offset"], json_data["limit"], product["name"])
 
     elif sql_method == "select_one":
-        return __select_one__(item_data["timestamp"])
+        return __select_one__(product["product_id"])
 
     elif sql_method == "insert":
         file = request_files.get("file")
-        price = format.currency(item_data["price"])
-        json_data["timestamp"] = int(time.time())
-        if db_items.__insert__(json_data["timestamp"],
-                               item_data["name"],
-                               item_data["price"],
-                               item_data["quantity"],
-                               item_data["has_image"],
-                               item_data["data"]):
-            if (not item_data["has_image"]
-                    or backblaze.__upload__(file, str(json_data["timestamp"]))
-                        or format.currency_match(price)):
-                return True
-            print("Something went wrong! Removing item!")
-            db_items.__delete__(json_data["timestamp"])
+        price = format.currency(product["price"])
 
+        if not format.currency_match(price):
+            print("Price not matching! Cancelled insertion")
+            return False
+
+        if db_products.__insert__(product["name"],
+                                  product["price"],
+                                  product["quantity"],
+                                  product["product_data"]):
+
+            product_images = product["product_data"]["images"]
+            for url in product_images:
+                backblaze.__upload__(file, url)
+            return True
+
+        print("Something went wrong while inserting product!")
         return False
 
     elif sql_method == "update":
-        if item_data["name"]:
-            result = db_items.__update_name__(item_data["timestamp"], item_data["name"])
+        if product["name"]:
+            result = db_products.__update_name__(product["product_id"], product["name"])
             if not result:
                 return result
 
-        if item_data["price"]:
-            price = format.currency(item_data["price"])
+        if product["price"]:
+            price = format.currency(product["price"])
             print(price)
             if not format.currency_match(price):
                 return False
-            result = db_items.__update_price__(item_data["timestamp"], price)
+            result = db_products.__update_price__(product["product_id"], price)
             if not result:
                 return result
 
-        if item_data["quantity"]:
-            result = db_items.__update_quantity__(item_data["timestamp"], item_data["quantity"])
+        if product["quantity"]:
+            result = db_products.__update_quantity__(product["product_id"], product["quantity"])
             if not result:
                 return result
 
-        if item_data["data"]:
-            result = db_items.__update_data__(item_data["timestamp"], item_data["data"])
-            if not result:
-                return result
-
-        if item_data["has_image"]:
-            result = db_items.__update_has_image__(item_data["timestamp"], item_data["has_image"])
+        if product["product_data"]:
+            result = db_products.__update_data__(product["product_id"], product["product_data"])
             if not result:
                 return result
 
         return True
     elif sql_method == "delete":
-        return db_items.__delete__(item_data["timestamp"])
+        return db_products.__delete__(product["product_id"])
