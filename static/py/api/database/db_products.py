@@ -4,7 +4,7 @@ TABLE_NAME = "Products"
 
 def __create_table__():
     statement = (f"CREATE TABLE {TABLE_NAME} ("
-                 f"ProductID GENERATED ALWAYS AS IDENTITY INTEGER PRIMARY KEY,"
+                 f"ProductID VARCHAR(12) PRIMARY KEY,"
                  f"Name VARCHAR(1000),"
                  f"Price VARCHAR(7),"
                  f"Quantity INTEGER,"
@@ -44,7 +44,7 @@ def __select_all_name__(offset: int, limit: int, name: str):
     return None
 
 
-def __select_one__(product_id: int):
+def __select_one__(product_id: str):
     statement = f"SELECT * FROM {TABLE_NAME} WHERE ProductID = {product_id}"
     if database.__execute__(statement):
         print("Selected row successfully")
@@ -53,9 +53,9 @@ def __select_one__(product_id: int):
     return None
 
 
-def __insert__(name: str, price: str, quantity: int, product_data):
-    statement = f"INSERT INTO {TABLE_NAME} (Name, Price, Quantity, ProductData) VALUES (:1, :2, :3, :4)"
-    result = database.__execute__(statement, (name, price, quantity, product_data))
+def __insert__(product_id: str, name: str, price: str, quantity: int, product_data):
+    statement = f"INSERT INTO {TABLE_NAME} (ProductID, Name, Price, Quantity, ProductData) VALUES (:1, :2, :3, :4, :5)"
+    result = database.__execute__(statement, (product_id, name, price, quantity, product_data))
     if result:
         print("Inserted row successfully")
     else:
@@ -63,7 +63,7 @@ def __insert__(name: str, price: str, quantity: int, product_data):
     return result
 
 
-def _update(product_id: int, set_query: str):
+def _update(product_id: str, set_query: str):
     statement = f"UPDATE {TABLE_NAME} SET {set_query} WHERE ProductID = {product_id}"
     result = database.__execute__(statement)
     if result:
@@ -73,22 +73,22 @@ def _update(product_id: int, set_query: str):
     return result
 
 
-def __update_name__(product_id: int, name: str):
+def __update_name__(product_id: str, name: str):
     return _update(product_id, f"NAME = '{name}'")
 
 
-def __update_price__(product_id: int, price: str):
+def __update_price__(product_id: str, price: str):
     return _update(product_id, f"PRICE = '{price}'")
 
 
-def __update_quantity__(product_id: int, quantity: int):
+def __update_quantity__(product_id: str, quantity: int):
     return _update(product_id, f"Quantity = '{quantity}'")
 
-def __update_data__(product_id: int, product_data):
+def __update_data__(product_id: str, product_data):
     return _update(product_id, f"ProductData = '{product_data}'")
 
 
-def __delete__(product_id: int):
+def __delete__(product_id: str):
     result = database.__execute__(f"DELETE FROM {TABLE_NAME} WHERE ProductID = {product_id}")
     if result:
         print("Item deleted successfully")

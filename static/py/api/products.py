@@ -3,7 +3,7 @@ import json
 
 from static.py.api.bucket.backblaze import backblaze
 from static.py.api.database import db_products
-from static.py.api.format import format
+from static.py.api.others import format, id_gens
 
 
 def __select_all__(offset: int, limit: int, name: str = ""):
@@ -28,7 +28,7 @@ def __select_all__(offset: int, limit: int, name: str = ""):
     return select_all
 
 
-def __select_one__(product_id):
+def __select_one__(product_id: str):
     old_data = db_products.__select_one__(product_id)
 
     benchmark_time = time.time()
@@ -41,22 +41,24 @@ def __select_one__(product_id):
 
 
 def parse_data(old_data):
-    if not (type(old_data[5]) == dict):
-        lob_data = old_data[5]
+    if not (type(old_data[4]) == dict):
+        lob_data = old_data[4]
         parsed_data = json.loads(str(lob_data))
     else:
-        parsed_data = old_data[5]
+        parsed_data = old_data[4]
 
     new_data = {
         "ProductID": old_data[0],
         "Name": old_data[1],
         "Price": old_data[2],
         "Quantity": old_data[3],
-        "HasImage": old_data[4],
-        "MetaData": parsed_data
+        "ProductData": parsed_data,
+        "ImageURLs": []
     }
-    if old_data[4] == 1:
-        new_data["url"] = backblaze.__get_url__(f"{old_data[0]}")
+    images = parsed_data["images"]
+    for url_name in images:
+        image_url = backblaze.__get_url__(url_name)
+        new_data["ImageURLs"].append(image_url)
 
     return new_data
 
@@ -76,24 +78,29 @@ def api(request_form, request_files):
         return __select_one__(product["product_id"])
 
     elif sql_method == "insert":
-        file = request_files.get("file")
+        product_id = id_gens.generator(db_products.__select_one__, 12)
+
+        files = request_files
         price = format.currency(product["price"])
 
         if not format.currency_match(price):
             print("Price not matching! Cancelled insertion")
             return False
 
-        if db_products.__insert__(product["name"],
+        if db_products.__insert__(product_id,
+                                  product["name"],
                                   product["price"],
                                   product["quantity"],
                                   product["product_data"]):
 
-            product_images = product["product_data"]["images"]
-            for url in product_images:
-                backblaze.__upload__(file, url)
+            index = 0
+            while index <= len(files):
+                url_name = f"product_image={product_id} ({index})"
+                backblaze.__upload__(files[index], url_name)
+                index += 1
             return True
 
-        print("Something went wrong while inserting product!")
+        print("Something went wrong while creating product!")
         return False
 
     elif sql_method == "update":
