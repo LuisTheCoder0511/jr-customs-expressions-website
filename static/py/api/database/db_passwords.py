@@ -4,24 +4,24 @@ TABLE_NAME = "Passwords"
 
 def __create_table__():
     statement = (f"CREATE TABLE {TABLE_NAME} ("
-                 f"PasswordID VARCHAR(12) PRIMARY KEY,"
+                 f"PasswordID VARCHAR(24) PRIMARY KEY,"
                  f"PasswordHash BLOB,"
-                 f"Timestamp INTEGER)")
-    if database.execute(statement):
+                 f"PasswordTimestamp INTEGER)")
+    if database.__execute__(statement):
         print("Table created successfully")
     else:
         print("Failed to create table")
 
 
-def drop_table():
-    if database.execute(f"DROP TABLE {TABLE_NAME}"):
+def __drop_table__():
+    if database.__execute__(f"DROP TABLE {TABLE_NAME}"):
         print("Table dropped successfully")
     else:
         print("Failed to drop table")
 
 
 def __select__(password_id: str):
-    statement = f"SELECT PasswordID FROM {TABLE_NAME} WHERE PasswordID = '{password_id}'"
+    statement = f"SELECT * FROM {TABLE_NAME} WHERE PasswordID = '{password_id}'"
     if database.__execute__(statement):
         print("Selected row successfully")
         return database.__fetch_one__()
@@ -29,10 +29,20 @@ def __select__(password_id: str):
     return None
 
 
+def __select_all__():
+    database.__row_factory__()
+    statement = f"SELECT * FROM {TABLE_NAME} ORDER BY PasswordID DESC"
+    if database.__execute__(statement):
+        print("Selected all rows successfully")
+        return database.__fetch_all__()
+    print("Failed to select all rows")
+    return None
+
+
 def __insert__(password_id: str, hashed_password: bytes, timestamp: int):
-    statement = (f"INSERT INTO {TABLE_NAME} (PasswordID, PasswordHash, Timestamp) "
+    statement = (f"INSERT INTO {TABLE_NAME} (PasswordID, PasswordHash, PasswordTimestamp) "
                  f"VALUES (:1, :2, :3)")
-    result = database.execute(statement, (password_id, hashed_password, timestamp))
+    result = database.__execute__(statement, (password_id, hashed_password, timestamp))
     if result:
         print("Inserted row successfully")
     else:
@@ -41,11 +51,11 @@ def __insert__(password_id: str, hashed_password: bytes, timestamp: int):
 
 
 def __update__(password_id: str, hashed_password: bytes, timestamp: int):
-    statement = (f"UPDATE {TABLE_NAME}"
-                 f"SET PasswordHash = (:1),"
-                 f"Timestamp = (:2) "
+    statement = (f"UPDATE {TABLE_NAME} "
+                 f"SET PasswordHash = (:1), "
+                 f"PasswordTimestamp = (:2) "
                  f"WHERE PasswordID = '{password_id}'")
-    result = database.execute(statement, (hashed_password, timestamp))
+    result = database.__execute__(statement, (hashed_password, timestamp))
     if result:
         print("Updated row successfully")
     else:

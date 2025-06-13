@@ -74,7 +74,7 @@
                         font-size: 1.1rem;
                     }
 
-                    .product_option {
+                    .product_price {
                         font-size: 0.9rem;
                         color: dimgray;
                     }
@@ -131,7 +131,7 @@
                 }
             }
 
-            .product_price {
+            .product_cost {
                 margin: auto 0;
             }
         }

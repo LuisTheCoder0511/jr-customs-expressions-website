@@ -270,8 +270,15 @@
         #reviews_stars_total {
             font-size: 1.2rem;
         }
-        img {
-            width: 32px;
+        #reviews_stars_rating {
+            width: 190px;
+            margin: auto;
+            background-color: gray;
+            border-radius: 32px;
+            img {
+                margin-top: 3px;
+                width: 32px;
+            }
         }
 
         #reviews_stars_stats {
@@ -285,6 +292,7 @@
 
                 img {
                     margin-right: 12px;
+                    width: 32px;
                 }
 
                 .rate_number, .rate_total {
@@ -309,7 +317,7 @@
 
                     .rate_background {
                         position: relative;
-                        top: 11px;
+                        top: 12px;
                         background-color: gray;
                     }
 

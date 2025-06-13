@@ -8,7 +8,7 @@ from static.py.api.others import format, id_gens
 
 def __select_all__(offset: int, limit: int, name: str = ""):
     if not name:
-        select_all = db_products.__select_all__(offset, limit)
+        select_all = db_products.__select_all_limit__(offset, limit)
     else:
         select_all = db_products.__select_all_name__(offset, limit, name)
 

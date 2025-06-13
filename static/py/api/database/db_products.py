@@ -22,10 +22,20 @@ def __drop_table__():
         print("Failed to drop table")
 
 
-def __select_all__(offset: int, limit: int):
+def __select_all_limit__(offset: int, limit: int):
     database.__row_factory__()
     statement = (f"SELECT * FROM {TABLE_NAME} ORDER BY ProductID DESC\n"
                  f"OFFSET {offset} ROWS FETCH NEXT {limit} ROWS ONLY")
+    if database.__execute__(statement):
+        print("Selected all rows successfully")
+        return database.__fetch_all__()
+    print("Failed to select all rows")
+    return None
+
+
+def __select_all__():
+    database.__row_factory__()
+    statement = f"SELECT * FROM {TABLE_NAME} ORDER BY ProductID DESC"
     if database.__execute__(statement):
         print("Selected all rows successfully")
         return database.__fetch_all__()

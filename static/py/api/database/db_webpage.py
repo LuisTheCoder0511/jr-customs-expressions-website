@@ -30,6 +30,14 @@ def __select__():
     else:
         print("Failed to select table")
 
+def __select_all__():
+    statement = f"SELECT * FROM {TABLE_NAME} ORDER BY ID DESC"
+    if database.__execute__(statement):
+        print("Selected row successfully")
+        return database.__fetch_one__()
+    print("Failed to select row")
+    return None
+
 
 def __insert__(data: str):
     statement = f"INSERT INTO {TABLE_NAME} (ID, Data) VALUES (:1, :2)"
