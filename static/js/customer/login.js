@@ -9,7 +9,8 @@ const password2 = document.getElementById("password2")
 
 let register = false
 
-click_a.addEventListener("click", () => {
+click_a.addEventListener("mousedown", e => {
+    if (e.button !== 0) return
     register = !register
     if (register){
         click_div.textContent = "Already have an account?"
@@ -26,7 +27,8 @@ click_a.addEventListener("click", () => {
     }
 })
 
-submit_text.addEventListener("click", () => {
+submit_text.addEventListener("mousedown", e => {
+    if (e.button !== 0) return
     let pass = true
 
     if (username.value === "") {

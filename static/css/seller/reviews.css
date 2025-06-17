@@ -1,0 +1,17 @@
+#content {
+    display: flex;
+}
+
+#reviews_content {
+    width: 100%;
+    margin: 0 8px;
+    border-color: gray;
+    border-style: solid;
+    border-width: 0 2px 0 2px;
+
+    #title {
+        padding: 10px;
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+}

@@ -67,7 +67,6 @@ class Database:
 
     def __execute__(self, statement: str, params: tuple = None):
         self._open()
-        print(f"\nStatement:\n{statement}\n")
         try:
             if params is None:
                 self._cursor.execute(statement)
@@ -76,7 +75,6 @@ class Database:
             self._connection.commit()
         except Exception as e:
             print(e)
-            print(e.args)
             return False
         return True
 

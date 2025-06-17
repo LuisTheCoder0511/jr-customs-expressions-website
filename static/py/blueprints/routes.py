@@ -1,6 +1,6 @@
 import json
 
-from flask import render_template, Blueprint, request, jsonify, send_file
+from flask import render_template, Blueprint, request, jsonify, send_file, redirect
 
 from static.py.api import webpage, products, accounts, passwords, carts, orders
 from static.py.api.others import session
@@ -8,16 +8,29 @@ from static.py.api.others import session
 blueprint = Blueprint("routes", __name__)
 
 @blueprint.route("/")
-def index():
-    return render_template("home.html")
+def customer_index():
+    return redirect("/customer_page/home")
 
-@blueprint.route("/page/<name>")
-def page(name):
-    return render_template(name + ".html")
+@blueprint.route("/seller_page")
+def seller_index():
+    return redirect("/seller_page/customize")
 
-@blueprint.route("/base/<name>")
-def template(name):
-    return send_file("templates/base/" + name + ".html", mimetype="text/html")
+@blueprint.route("/customer_page/<name>")
+def customer_page(name):
+    print("Redirecting to /customer_page/" + name)
+    return render_template("customer/" + name + ".html")
+
+@blueprint.route("/seller_page/<name>")
+def seller_page(name):
+    return render_template("seller/" + name + ".html")
+
+@blueprint.route("/customer_base/<name>")
+def customer_base(name):
+    return send_file("templates/customer/base/" + name + ".html", mimetype="text/html")
+
+@blueprint.route("/seller_base/<name>")
+def seller_base(name):
+    return send_file("templates/seller/base/" + name + ".html", mimetype="text/html")
 
 @blueprint.route("/api/<name>", methods=["GET", "POST"])
 def api(name):

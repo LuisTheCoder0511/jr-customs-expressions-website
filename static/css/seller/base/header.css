@@ -1,0 +1,143 @@
+#header {
+    padding: 2px;
+    display: flex;
+    z-index: 1;
+
+    border-style: solid;
+    border-color: gray;
+    border-width: 0 0 2px 0;
+
+    #title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: auto;
+    }
+
+    #popup_buttons {
+        display: flex;
+        margin: auto 8px auto 0;
+
+        div {
+            display: flex;
+            border-width: 2px;
+            border-style: solid;
+            border-radius: 50%;
+            margin: 4px 4px;
+            width: 32px;
+            height: 32px;
+
+            a {
+                height: 32px;
+                width: 32px;
+            }
+
+            img {
+                width: 32px;
+            }
+        }
+    }
+
+    #popup {
+        visibility: hidden;
+        background-color: white;
+        border-color: gray;
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        width: 250px;
+        padding: 8px 0;
+        text-align: right;
+        top: 84px;
+        right: 12px;
+
+        div:not(.breakpoint):hover {
+            background-color: lightgray;
+        }
+
+        .breakpoint {
+            margin: 4px 0;
+            border-width: 1px;
+            border-style: solid;
+            border-color: gray;
+        }
+
+        #account_container {
+            display: flex;
+            height: 40px;
+            text-align: left;
+            margin-left: 4px;
+            padding: 6px 6px;
+
+            #account_img {
+                width: 36px;
+                height: 36px;
+                border-style: solid;
+                border-width: 2px;
+                border-radius: 50%;
+                border-color: gray;
+                background-color: lightgray;
+
+                img {
+                    padding: 2px;
+                    width: 32px;
+                }
+            }
+
+            #account_info {
+                margin-left: 6px;
+
+                #account_name {
+                    font-size: 0.9rem;
+                }
+
+                #account_username {
+                    font-size: 0.75rem;
+                }
+            }
+        }
+
+        .container {
+            display: flex;
+            height: 32px;
+            text-align: left;
+            margin-left: 8px;
+        }
+
+        .container_img {
+            width: 30px;
+            height: 20px;
+            img {
+                width: 20px;
+            }
+        }
+
+        .container_text {
+            margin: auto 0;
+            font-size: 0.95rem;
+        }
+
+        #seller_img {
+            margin: auto 0 auto 4px;
+        }
+
+        #orders_img {
+            margin: auto 0 auto 4px;
+        }
+
+        #settings_img {
+            margin: auto 0 auto 3px;
+        }
+
+        #browsing_img {
+            margin: auto 0 auto 3px;
+            padding-top: 1px;
+        }
+
+        #devices_img {
+            margin: auto 0 auto 4px;
+        }
+    }
+}

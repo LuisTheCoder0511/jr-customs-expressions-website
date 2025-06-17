@@ -1,0 +1,26 @@
+#sidebar {
+    border-width: 0 2px 0 0;
+    border-style: solid;
+    border-color: gray;
+}
+
+.sidebar_button {
+    display: flex;
+    padding: 4px;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    border-color: gray;
+    img {
+        width: 36px;
+    }
+    .sidebar_text {
+        display: flex;
+        visibility: hidden;
+        margin: auto 4px auto auto;
+        padding-left: 4px;
+    }
+}
+
+.sidebar_button:hover {
+    background-color: pink;
+}

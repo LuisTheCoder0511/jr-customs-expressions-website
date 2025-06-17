@@ -11,7 +11,7 @@ def index():
 
 @blueprint.route("/content/<name>", methods=['GET'])
 def seller_content(name):
-    header = render_template("seller/base.html")
+    header = render_template("seller/base/header.html")
     template = f"seller/{name}.html"
     body = render_template(template)
     return f"{header}{body}"

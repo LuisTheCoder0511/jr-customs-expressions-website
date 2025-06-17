@@ -1,3 +1,0 @@
-const options = {
-    method: 'POST'
-}
