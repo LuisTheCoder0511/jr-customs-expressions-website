@@ -6,9 +6,8 @@ def __select__():
     return db_webpage.__select__()
 
 
-def api(request_form):
+def api(request_form, name):
     json_data = json.loads(request_form.get("data"))
-    sql_method = json_data["sql_method"]
     if db_webpage.__create_table__():
         temp_data = {
             "data": {
@@ -23,10 +22,10 @@ def api(request_form):
         str_json = json.dumps(temp_data, indent=4)
         db_webpage.__insert__(str_json)
 
-    if sql_method == "select":
+    if name == "select":
         return __select__()
 
-    elif sql_method == "update":
+    elif name == "update":
         webpage_data = json_data["data"]
         result = db_webpage.__update__(webpage_data)
         if not result:

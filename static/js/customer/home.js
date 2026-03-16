@@ -14,6 +14,20 @@ function readAbout(){
         })
 }
 
+function loadProducts(){
+    const list = document.getElementsByClassName("product_template_click")
+    const iterator = list[Symbol.iterator]()
+    let element = iterator.next()
+    while (!element.done){
+        const template = element.value
+        template.addEventListener("mousedown", e => {
+            if (e.button !== 0) return
+            window.location.href = "/customer_page/product"
+        })
+        element = iterator.next()
+    }
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     const targetId = sessionStorage.getItem("scrollTarget")
     if (targetId) {
@@ -31,3 +45,4 @@ function scrollInto(name){
 }
 
 readAbout()
+loadProducts()

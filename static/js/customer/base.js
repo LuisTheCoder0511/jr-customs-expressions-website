@@ -20,18 +20,6 @@ fetch("/customer_base/header")
             if (e.button !== 0) return
             window.location.href = "/seller_page"
         })
-
-        const list = document.getElementsByClassName("product_template_click")
-        const iterator = list[Symbol.iterator]()
-        let element = iterator.next()
-        while (!element.done){
-            const template = element.value
-            template.addEventListener("mousedown", e => {
-                if (e.button !== 0) return
-                window.location.href = "/customer_page/product"
-            })
-            element = iterator.next()
-        }
     })
 
 fetch("/customer_base/footer")

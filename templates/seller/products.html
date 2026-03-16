@@ -6,15 +6,155 @@
     <title>JR's Seller Studio - Products</title>
 </head>
 <body>
+    <div id="product_edit_window">
+        <div id="product_edit_window_popup">
+            <a id="product_edit_window_close">
+                <img src="/static/assets/images/x_icon.png" alt="close"/>
+            </a>
+            <div id="product_edit_container">
+                <div id="product_edit_1">
+                    <div id="product_edit_main_image">
+                        <label for="imageInput1" class="image_labels">
+                            <input type="file" id="imageInput1" hidden="hidden" accept="image/*">
+                            <img id="image1" src="/static/assets/images/upload_img.png" alt="upload"/>
+                        </label>
+                    </div>
+                    <div id="product_edit_sub_images">
+                        <label for="imageInput2" id="sub_label_1" class="image_labels">
+                            <input type="file" id="imageInput2" hidden="hidden" accept="image/*">
+                            <img id="image2" src="/static/assets/images/upload_img.png" alt="upload"/>
+                        </label>
+                        <label for="imageInput3" id="sub_label_2" class="image_labels">
+                            <input type="file" id="imageInput3" hidden="hidden" accept="image/*">
+                            <img id="image3" src="/static/assets/images/upload_img.png" alt="upload"/>
+                        </label>
+                        <label for="imageInput4" id="sub_label_3" class="image_labels">
+                            <input type="file" id="imageInput4" hidden="hidden" accept="image/*">
+                            <img id="image4" src="/static/assets/images/upload_img.png" alt="upload"/>
+                        </label>
+                        <label for="imageInput5" id="sub_label_4" class="image_labels">
+                            <input type="file" id="imageInput5" hidden="hidden" accept="image/*">
+                            <img id="image5" src="/static/assets/images/upload_img.png" alt="upload"/>
+                        </label>
+                        <label for="imageInput6" id="sub_label_5" class="image_labels">
+                            <input type="file" id="imageInput6" hidden="hidden" accept="image/*">
+                            <img id="image6" src="/static/assets/images/upload_img.png" alt="upload"/>
+                        </label>
+                        <label for="imageInput7" id="sub_label_6" class="image_labels">
+                            <input type="file" id="imageInput7" hidden="hidden" accept="image/*">
+                            <img id="image7" src="/static/assets/images/upload_img.png" alt="upload"/>
+                        </label>
+                    </div>
+                </div>
+                <div id="product_edit_2">
+                    <div class="product_edit_input">
+                        <div class="product_edit_input_title">Name</div>
+                        <label for="product_edit_name"></label>
+                        <input class="product_edit_input_box" id="product_edit_name" placeholder="Product Name">
+                    </div>
+                    <div class="product_edit_input">
+                        <div class="product_edit_input_title">Price</div>
+                        <label for="product_edit_price"></label>
+                        <input class="product_edit_input_box" id="product_edit_price" placeholder="$##.##">
+                    </div>
+                    <div class="product_edit_input">
+                        <div class="product_edit_input_title">Quantity</div>
+                        <label for="product_edit_quantity"></label>
+                        <input class="product_edit_input_box" id="product_edit_quantity" placeholder="1-100">
+                    </div>
+                    <div class="product_edit_input">
+                        <div class="product_edit_input_title">Categories</div>
+                        <label for="product_edit_categories"></label>
+                        <input class="product_edit_input_box" id="product_edit_categories" placeholder="Add Category">
+                    </div>
+                    <div class="product_edit_input">
+                        <div class="product_edit_input_title">Description</div>
+                        <label for="product_edit_description"></label>
+                        <textarea class="product_edit_input_big_box"
+                                  id="product_edit_description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div id="product_edit_submit">
+                <a id="submit_button">
+                    Submit
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div id="header"></div>
 
     <div id="content">
         <div id="sidebar"></div>
         <div id="products_content">
-            <div id="title">Products</div>
-            <div id="products_listing">
-                <label for="products_search"></label><input id="products_search">
+            <div id="products_header">
+                <div id="title">Products</div>
+                <div id="products_add">
+                    <a id="products_add_button">
+                        <img src="/static/assets/images/plus_icon.png" alt="add"/>
+                    </a>
+                </div>
+            </div>
+            <div id="products_input">
+                <div id="products_input_search">
+                    <label for="products_input_search_box"></label>
+                    <input id="products_input_search_box" placeholder="Search Product"/>
+                    <a id="products_input_search_button">
+                       <img id="products_input_search_image" src="/static/assets/images/search.png" alt="search"/>
+                    </a>
+                </div>
+                <div id="products_filter">
+                    <label for="products_filter_dropdown"></label>
+                    <select id="products_filter_dropdown">
+                        <option value="All">All</option>
+                        <option value="Tumblrs">Tumblrs</option>
+                        <option value="Onesies">Onesies</option>
+                        <option value="Plushies">Plushies</option>
+                    </select>
+                </div>
+            </div>
 
+            <div id="products_listing">
+                <div id="products_listing_header">
+                    <div id="products_content_header_title">
+                        Results of "Test"
+                    </div>
+                    <div id="products_listing_header_page">
+                        <div id="products_listing_header_page_label">
+                            Page 1 of 5
+                        </div>
+                        <div id="products_listing_header_page_nav">
+                            something
+                        </div>
+                    </div>
+                </div>
+                <div id="products_listing_results">
+                    <div class="product_template">
+                        <a class="product_template_click">
+                            <img src="/static/assets/images/Image_Test_Template.png" alt="test"/>
+                            <div class="product_template_name">Name of the product</div>
+                            <div>$6.99</div>
+                            <div>In stock</div>
+                        </a>
+                    </div>
+                    <div class="product_template">
+                        <a class="product_template_click">
+                            <img src="/static/assets/images/Image_Test_Template.png" alt="test"/>
+                            <div class="product_template_name">Name of the product, can be super, super long too.</div>
+                            <div>$6.99</div>
+                            <div>In stock</div>
+                        </a>
+                    </div>
+                    <div class="product_template">
+                        <a class="product_template_click">
+                            <img src="/static/assets/images/Image_Test_Template.png" alt="test"/>
+                            <div class="product_template_name">Name of the product, can be super, super long too.</div>
+                            <div>$6.99</div>
+                            <div>In stock</div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

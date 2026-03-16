@@ -32,12 +32,24 @@ def customer_base(name):
 def seller_base(name):
     return send_file("templates/seller/base/" + name + ".html", mimetype="text/html")
 
-@blueprint.route("/api/<name>", methods=["GET", "POST"])
-def api(name):
+@blueprint.route("/api/<name>/<method>", methods=["GET", "POST"])
+def api(name, method):
     data = {}
     form_data = request.form.to_dict()
-    print(f"Method: {name}")
-    if name == "register":
+    print(f"Name: {name}")
+    print(f"Method: {method}")
+    if name == "login":
+        login(data, form_data, method)
+    elif name == "products":
+        data = products.api(form_data, request.files, method)
+    elif name == "webpage":
+        data = webpage.api(form_data, method)
+
+    return jsonify(data)
+
+
+def login(data, form_data, method):
+    if method == "register":
         result = accounts.api(form_data, None, "select_username")
         print("Account checked!")
         print(result)
@@ -66,7 +78,7 @@ def api(name):
         session.write_file(json_data["data"])
         data["redirect"] = True
 
-    if name == "login":
+    if method == "login":
         result = accounts.api(form_data, None, "select_username")
         if not result:
             data["error"] = "Password not valid"
@@ -94,10 +106,3 @@ def api(name):
         json_data = json.loads(form_data.get("data"))
 
         session.write_file(json_data["data"])
-
-    if name == "products":
-        data = products.api(form_data, request.files)
-    elif name == "webpage":
-        data = webpage.api(form_data)
-
-    return jsonify(data)

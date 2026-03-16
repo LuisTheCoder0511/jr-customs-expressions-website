@@ -6,6 +6,83 @@
     <title>JR Customs Expressions - Cart</title>
 </head>
 <body>
+    <div id="product_edit_window">
+        <div id="product_edit_window_popup">
+            <a id="product_edit_window_close">
+                <img src="/static/assets/images/x_icon.png" alt="close"/>
+            </a>
+            <div id="product_edit_container">
+                <div id="product_edit_1">
+                    <div id="product_edit_main_image">
+                        <label for="imageInput1" class="image_labels">
+                            <input type="file" id="imageInput1" hidden="hidden" accept="image/*">
+                            <img id="image1" src="/static/assets/images/upload_img.png" alt="upload"/>
+                        </label>
+                    </div>
+                    <div id="product_edit_sub_images">
+                        <label for="imageInput2" id="sub_label_1" class="image_labels">
+                            <input type="file" id="imageInput2" hidden="hidden" accept="image/*">
+                            <img id="image2" src="/static/assets/images/upload_img.png" alt="upload"/>
+                        </label>
+                        <label for="imageInput3" id="sub_label_2" class="image_labels">
+                            <input type="file" id="imageInput3" hidden="hidden" accept="image/*">
+                            <img id="image3" src="/static/assets/images/upload_img.png" alt="upload"/>
+                        </label>
+                        <label for="imageInput4" id="sub_label_3" class="image_labels">
+                            <input type="file" id="imageInput4" hidden="hidden" accept="image/*">
+                            <img id="image4" src="/static/assets/images/upload_img.png" alt="upload"/>
+                        </label>
+                        <label for="imageInput5" id="sub_label_4" class="image_labels">
+                            <input type="file" id="imageInput5" hidden="hidden" accept="image/*">
+                            <img id="image5" src="/static/assets/images/upload_img.png" alt="upload"/>
+                        </label>
+                        <label for="imageInput6" id="sub_label_5" class="image_labels">
+                            <input type="file" id="imageInput6" hidden="hidden" accept="image/*">
+                            <img id="image6" src="/static/assets/images/upload_img.png" alt="upload"/>
+                        </label>
+                        <label for="imageInput7" id="sub_label_6" class="image_labels">
+                            <input type="file" id="imageInput7" hidden="hidden" accept="image/*">
+                            <img id="image7" src="/static/assets/images/upload_img.png" alt="upload"/>
+                        </label>
+                    </div>
+                </div>
+                <div id="product_edit_2">
+                    <div class="product_edit_input">
+                        <div class="product_edit_input_title">Name</div>
+                        <label for="product_edit_name"></label>
+                        <input class="product_edit_input_box" id="product_edit_name" value="Product Name">
+                    </div>
+                    <div class="product_edit_input">
+                        <div class="product_edit_input_title">Price</div>
+                        <label for="product_edit_price"></label>
+                        <input class="product_edit_input_box" id="product_edit_price" value="$9.99">
+                    </div>
+                    <div class="product_edit_input">
+                        <div class="product_edit_input_title">Quantity</div>
+                        <label for="product_edit_quantity"></label>
+                        <input class="product_edit_input_box" id="product_edit_quantity" value="20">
+                    </div>
+                    <div class="product_edit_input">
+                        <div class="product_edit_input_title">Categories</div>
+                        <label for="product_edit_categories"></label>
+                        <input class="product_edit_input_box" id="product_edit_categories" value="Tumblr">
+                    </div>
+                    <div class="product_edit_input">
+                        <div class="product_edit_input_title">Description</div>
+                        <label for="product_edit_description"></label>
+                        <textarea class="product_edit_input_big_box"
+                                  id="product_edit_description">This a description for the product. Edited to be as long as possible for test</textarea>
+                    </div>
+                </div>
+            </div>
+            <div id="product_edit_submit">
+                <a id="submit_button">
+                    Submit
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div id="header"></div>
 
     <div id="cart">
@@ -35,11 +112,11 @@
                             <div class="product_price">
                                 Price: $6.99
                             </div>
-                            <div class="product_edit">
-                                <a class="edit">
+                            <div class="product_link_buttons">
+                                <a class="product_edit_link">
                                     Edit
                                 </a>
-                                <a class="remove">
+                                <a class="product_remove_link">
                                     Remove
                                 </a>
                             </div>

@@ -7,8 +7,15 @@
     border-color: gray;
     border-width: 0 0 2px 0;
 
+    #logo {
+        width: 54px;
+        img {
+            width: 54px;
+        }
+    }
+
     #title {
-        font-size: 1.5rem;
+        font-size: 1.35rem;
         font-weight: bold;
         margin: auto;
     }

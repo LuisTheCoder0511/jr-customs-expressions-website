@@ -4,6 +4,7 @@ import json
 from static.py.api.bucket.backblaze import backblaze
 from static.py.api.database import db_products
 from static.py.api.others import format, id_gens
+from static.py.api.others.parser import parse_lob_data
 
 
 def __select_all__(offset: int, limit: int, name: str = ""):
@@ -41,11 +42,7 @@ def __select_one__(product_id: str):
 
 
 def parse_data(old_data):
-    if not (type(old_data[4]) == dict):
-        lob_data = old_data[4]
-        parsed_data = json.loads(str(lob_data))
-    else:
-        parsed_data = old_data[4]
+    parsed_data = parse_lob_data(old_data[4])
 
     new_data = {
         "ProductID": old_data[0],
@@ -63,35 +60,40 @@ def parse_data(old_data):
     return new_data
 
 
-def api(request_form, request_files):
+def api(request_form, request_files, method):
     db_products.__create_table__()
 
     data = request_form.get("data")
     json_data = json.loads(data)
-    sql_method = json_data["sql_method"]
     product = json_data["data"]
 
-    if sql_method == "select_all":
-        return __select_all__(json_data["offset"], json_data["limit"], product["name"])
+    product_id = product["product_id"]
+    product_name = product["name"]
+    product_price = product["price"]
+    product_quantity = product["quantity"]
+    product_data = product["product_data"]
 
-    elif sql_method == "select_one":
-        return __select_one__(product["product_id"])
+    if method == "select_all":
+        return __select_all__(json_data["offset"], json_data["limit"], product_name)
 
-    elif sql_method == "insert":
+    elif method == "select_one":
+        return __select_one__(product_id)
+
+    elif method == "insert":
         product_id = id_gens.generator(db_products.__select_one__, 12)
 
         files = request_files
-        price = format.currency(product["price"])
+        price = format.currency(product_price)
 
         if not format.currency_match(price):
             print("Price not matching! Cancelled insertion")
             return False
 
         if db_products.__insert__(product_id,
-                                  product["name"],
-                                  product["price"],
-                                  product["quantity"],
-                                  product["product_data"]):
+                                  product_name,
+                                  product_price,
+                                  product_quantity,
+                                  product_data):
 
             index = 0
             while index <= len(files):
@@ -103,31 +105,31 @@ def api(request_form, request_files):
         print("Something went wrong while creating product!")
         return False
 
-    elif sql_method == "update":
-        if product["name"]:
-            result = db_products.__update_name__(product["product_id"], product["name"])
+    elif method == "update":
+        if product_name:
+            result = db_products.__update_name__(product_id, product_name)
             if not result:
                 return result
 
-        if product["price"]:
-            price = format.currency(product["price"])
+        if product_price:
+            price = format.currency(product_price)
             print(price)
             if not format.currency_match(price):
                 return False
-            result = db_products.__update_price__(product["product_id"], price)
+            result = db_products.__update_price__(product_id, price)
             if not result:
                 return result
 
-        if product["quantity"]:
-            result = db_products.__update_quantity__(product["product_id"], product["quantity"])
+        if product_price:
+            result = db_products.__update_quantity__(product_id, product_quantity)
             if not result:
                 return result
 
-        if product["product_data"]:
-            result = db_products.__update_data__(product["product_id"], product["product_data"])
+        if product_data:
+            result = db_products.__update_data__(product_id, product_data)
             if not result:
                 return result
 
         return True
-    elif sql_method == "delete":
-        return db_products.__delete__(product["product_id"])
+    elif method == "delete":
+        return db_products.__delete__(product_id)

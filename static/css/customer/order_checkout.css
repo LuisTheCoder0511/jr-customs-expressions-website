@@ -1,0 +1,126 @@
+#template {
+    position: fixed;
+    width: 720px;
+    height: 720px;
+    img {
+        width: 720px;
+    }
+    z-index: -1;
+}
+
+#header {
+    background-color: rgb(253, 207, 205);
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    border-color: gray;
+    display: flex;
+    justify-content: space-between;
+    img {
+        margin: 2px;
+        width: 48px;
+    }
+    #checkout_text {
+        margin: 8px;
+        line-height: 225%;
+    }
+}
+
+#steps {
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+#content {
+    display: flex;
+    #title {
+        margin: 15px 0;
+    }
+    width: fit-content;
+    margin: auto;
+    .input_box_group {
+        display: flex;
+        .input_box_1 {
+            margin: 5px 15px 5px 0;
+            width: 160px;
+        }
+
+        .input_box_2 {
+            margin: 5px 0 5px 15px;
+            width: 160px;
+
+        }
+
+        .input_box_input {
+            width: 152px;
+            height: 28px;
+        }
+    }
+
+    .input_big_box {
+        margin: 5px 0;
+        width: 350px;
+    }
+
+    .input_big_box_input {
+        width: 342px;
+        height: 28px;
+    }
+
+    #summary_box {
+        margin-left: 45px;
+        margin-top: 8px;
+        background-color: pink;
+        border-color: black;
+        border-style: solid;
+        border-width: 2px;
+
+        #summary_title {
+            background-color: lightgray;
+            text-align: center;
+            border-color: black;
+            border-style: solid;
+            border-width: 0 0 2px 0;
+            padding: 8px;
+        }
+
+        #summary_product {
+            padding: 8px;
+            width: 200px;
+            display: flex;
+
+            #summary_product_quantity_header {
+                width: 25px;
+            }
+
+            #summary_product_name_header {
+                width: 100px;
+            }
+
+            #summary_product_price_header {
+                width: 75px;
+            }
+
+            #summary_product_quantity {
+                width: 25px;
+            }
+
+            #summary_product_name {
+                text-wrap: wrap;
+                width: 100px;
+            }
+
+            #summary_product_price {
+                text-align: right;
+                width: 75px;
+            }
+        }
+
+        .summary_br {
+            margin: 8px;
+            width: 200px;
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+        }
+    }
+}

@@ -51,17 +51,15 @@ submit_text.addEventListener("mousedown", e => {
     let method = "register"
     if (!register) method = "login"
 
-    const form = new FormData()
     const data = {
         data: {
             username: username.value,
             raw_password: password.value
         }
     }
-    form.append("data", JSON.stringify(data))
-    options.body = form
+    options.body = newFormData(data, [])
 
-    fetch("/api/" + method, options)
+    fetch("/api/login/" + method, options)
         .then(r => r.json())
         .then(data => {
             if (data["redirect"]){
